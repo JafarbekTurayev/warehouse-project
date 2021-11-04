@@ -21,7 +21,6 @@ public class Input {
     private Warehouse warehouse;
     @ManyToOne
     private Supplier supplier;
-
     @ManyToOne
     private Currency currency;
     @Column(nullable = false, unique = true)

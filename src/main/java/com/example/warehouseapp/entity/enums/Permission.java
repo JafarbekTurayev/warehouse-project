@@ -20,6 +20,10 @@ public enum Permission {
     EDIT_WAREHOUSE,
     READ_WAREHOUSE,
 
-
+    //Category uchun
+    ADD_CATEGORY,
+    DELETE_CATEGORY,
+    EDIT_CATEGORY,
+    READ_CATEGORY,
 
 }

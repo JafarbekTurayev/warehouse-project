@@ -1,7 +1,12 @@
+GET http://localhost:1122/api/attachment/downloadFromDB/2
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzE2MjcsImV4cCI6MTYzNjA2NzYyN30.qm4PqbsuhP0P-dsq-BYwHrH79UkRgbtbD-DOC8N6xbKO3SDyuKg-9h-K1eO6E07u1ABEm7J_m2IIQxp0UqpxUw
+
+###
 
 
 ###
-POST http://localhost/api/auth/login
+POST http://localhost:1122/api/auth/login
 Content-Type: application/json
 
 {
@@ -9,16 +14,18 @@ Content-Type: application/json
   "password": "123"
 }
 
-###super eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU4NjY0MjYsImV4cCI6MTYzNTkwMjQyNn0.ckd4f4pvGm24oBMkGwt08fg7DD51qdl27RNCyd9iuqGdIe4VrWqwTwg87qTzm-NXrG8ztuSW_IqcUvL5FfsFoQ
+###super eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzE2MjcsImV4cCI6MTYzNjA2NzYyN30.qm4PqbsuhP0P-dsq-BYwHrH79UkRgbtbD-DOC8N6xbKO3SDyuKg-9h-K1eO6E07u1ABEm7J_m2IIQxp0UqpxUw
 ###
 #add warehouse
-POST http://localhost:80/api/warehouse
+POST http://localhost:1122/api/warehouse
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU4NjY0MjYsImV4cCI6MTYzNTkwMjQyNn0.ckd4f4pvGm24oBMkGwt08fg7DD51qdl27RNCyd9iuqGdIe4VrWqwTwg87qTzm-NXrG8ztuSW_IqcUvL5FfsFoQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzE2MjcsImV4cCI6MTYzNjA2NzYyN30.qm4PqbsuhP0P-dsq-BYwHrH79UkRgbtbD-DOC8N6xbKO3SDyuKg-9h-K1eO6E07u1ABEm7J_m2IIQxp0UqpxUw
 
 {
-  "name": "Nomer3"
+  "name": "Nomer2"
 }
+
+
 
 
 

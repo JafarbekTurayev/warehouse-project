@@ -34,7 +34,7 @@ public class DataLoader implements CommandLineRunner {
             Permission[] values = Permission.values();
             Set<Permission> permissionSet = new HashSet<Permission>(Arrays.asList(values));
 
-            Role admin = roleRepository.save(new Role(1, "ADMIN", true, permissionSet));
+            Role admin = roleRepository.save(new Role(1, "ADMIN", true,permissionSet));
 
             userRepository.save(new User("Superadmin",
                     "super",
@@ -42,6 +42,9 @@ public class DataLoader implements CommandLineRunner {
                     passwordEncoder.encode("123"),
                     admin,
                     true));
+
+
         }
     }
+
 }

@@ -1,14 +1,15 @@
 package com.example.warehouseapp.payload;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
+
 
 @Data
 public class LoginDTO {
 
-    @NotNull(message = "Username yoz iltimos!")
+    @NotNull
     private String userName;
-    @NotNull(message = "Password yozing iltimos")
+    @NotNull
     private String password;
 }

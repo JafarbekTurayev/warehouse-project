@@ -10,6 +10,7 @@ public interface InputProductRepository extends JpaRepository<InputProduct,Integ
 List<InputProduct> findAllByInput_Id(Integer input_id);
 List<InputProduct> findAllByProduct_Id(Integer product_id);
 
-Optional<InputProduct> findByInput_Id(Integer input_id);
 
+
+Optional<InputProduct> findByInput_Id(Integer input_id);
 }

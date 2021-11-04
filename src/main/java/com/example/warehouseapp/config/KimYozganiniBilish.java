@@ -9,6 +9,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class KimYozganiniBilish implements AuditorAware<UUID> {
+
+    
     @Override
     public Optional<UUID> getCurrentAuditor() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

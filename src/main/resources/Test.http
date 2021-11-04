@@ -1,5 +1,7 @@
+
+
 ###
-POST http://localhost:8080/api/auth/login
+POST http://localhost/api/auth/login
 Content-Type: application/json
 
 {
@@ -10,14 +12,12 @@ Content-Type: application/json
 ###super eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU4NjY0MjYsImV4cCI6MTYzNTkwMjQyNn0.ckd4f4pvGm24oBMkGwt08fg7DD51qdl27RNCyd9iuqGdIe4VrWqwTwg87qTzm-NXrG8ztuSW_IqcUvL5FfsFoQ
 ###
 #add warehouse
-POST http://localhost:8080/api/product
+POST http://localhost:80/api/warehouse
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU5MjE2MDcsImV4cCI6MTYzNjI4MTYwN30.6DLR-Cu0sjDryiulR8yp1_I0kpsEVsdew7s27eS4hUzaKtXBlzoTIgbGXTZpeMdi4KKR1-Het5J7kbmXf5OYaw
-
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU4NjY0MjYsImV4cCI6MTYzNTkwMjQyNn0.ckd4f4pvGm24oBMkGwt08fg7DD51qdl27RNCyd9iuqGdIe4VrWqwTwg87qTzm-NXrG8ztuSW_IqcUvL5FfsFoQ
 
 {
-  "name": "Diktafon",
-  "code" : "112234"
+  "name": "Nomer3"
 }
 
 ###

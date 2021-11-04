@@ -9,7 +9,7 @@ import java.util.Date;
 @Component
 public class JwtProvider {
 
-    long expireTime = 36000 * 1000;
+    long expireTime = 36000 * 10000;
     String secretKey = "Chumich.Uz";
 
 

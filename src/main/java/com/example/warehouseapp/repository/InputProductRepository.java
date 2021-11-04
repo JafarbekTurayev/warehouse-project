@@ -13,5 +13,4 @@ List<InputProduct> findAllByProduct_Id(Integer product_id);
 
 
 Optional<InputProduct> findByInput_Id(Integer input_id);
-
 }

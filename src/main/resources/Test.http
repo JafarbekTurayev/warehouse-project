@@ -14,7 +14,7 @@ Content-Type: application/json
 #add warehouse
 POST http://localhost:80/api/warehouse
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU4NjY0MjYsImV4cCI6MTYzNTkwMjQyNn0.ckd4f4pvGm24oBMkGwt08fg7DD51qdl27RNCyd9iuqGdIe4VrWqwTwg87qTzm-NXrG8ztuSW_IqcUvL5FfsFoQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMjk3OTEsImV4cCI6MTYzNjA2NTc5MX0.q-henRjd2m8Ok1CtR5IPGqNaXFFoU-pYfdfmrjSh8X_wkYX4XDs2TTZsOINn-W2GsIxXF50Q7XIosM6DmBZbmw
 
 {
   "name": "Nomer3"

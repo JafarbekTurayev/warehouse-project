@@ -20,5 +20,17 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
   "name": "Nomer3"
 }
 
+###
+###get one byId
+GET http://localhost:8080/api/product/3
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU5MjE2MDcsImV4cCI6MTYzNjI4MTYwN30.6DLR-Cu0sjDryiulR8yp1_I0kpsEVsdew7s27eS4hUzaKtXBlzoTIgbGXTZpeMdi4KKR1-Het5J7kbmXf5OYaw
+
+###
+###get all
+GET http://localhost:8080/api/product/allProduct
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU5MjE2MDcsImV4cCI6MTYzNjI4MTYwN30.6DLR-Cu0sjDryiulR8yp1_I0kpsEVsdew7s27eS4hUzaKtXBlzoTIgbGXTZpeMdi4KKR1-Het5J7kbmXf5OYaw
+
 
 

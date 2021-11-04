@@ -18,7 +18,7 @@ public class SupplierServise {
             supplierRepository.save(supplier);
             return new ApiResponse("Saved!", true);
         }
-        return new ApiResponse("this supplier already exists", false);
+        return new ApiResponse("This supplier already exists", false);
     }
 
     public ApiResponse getOne(Integer id) {

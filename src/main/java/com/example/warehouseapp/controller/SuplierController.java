@@ -54,7 +54,7 @@ public class SuplierController {
     }
     @GetMapping("/search")
     public HttpEntity<?> search(@RequestParam String name) {
-        List<Supplier> list = supplierRepository.findByNameStartsWithIgnoreCase(name);
+        List<Supplier> list = supplierRepository.FindByNameStartsWithIgnoreCase(name);
         return ResponseEntity.ok(list);
     }
 

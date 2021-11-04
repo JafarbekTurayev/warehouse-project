@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/login/suplier")
+@RequestMapping("/api/supplier")
 //@PreAuthorize(value="hasAuthority(' READ_PRODUCT')")
 public class SupplierController {
     @Autowired

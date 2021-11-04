@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -25,4 +26,6 @@ public class Input {
     private Currency currency;
     @Column(nullable = false, unique = true)
     private String factureNumber;
+    @OneToMany(mappedBy = "input", cascade = CascadeType.ALL)
+    private List<InputProduct> inputProductList;
 }

@@ -3,6 +3,7 @@ package com.example.warehouseapp.controller;
 import com.example.warehouseapp.entity.Product;
 import com.example.warehouseapp.entity.Warehouse;
 import com.example.warehouseapp.payload.ApiResponse;
+import com.example.warehouseapp.payload.ProductDTO;
 import com.example.warehouseapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -22,8 +23,8 @@ public class ProductController {
 
     @PreAuthorize(value = "hasAuthority('ADD_PRODUCT')")
     @PostMapping
-    public HttpEntity<?> addProduct(@RequestBody Product product) {
-        ApiResponse response = productService.saveProduct(product);
+    public HttpEntity<?> addProduct(@RequestBody ProductDTO productDTO) {
+        ApiResponse response = productService.saveProduct(productDTO);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 

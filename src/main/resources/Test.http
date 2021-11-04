@@ -1,3 +1,40 @@
+POST http://localhost/api/category
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+
+{
+  "name": "Texnika"
+}
+
+###
+
+POST http://localhost/api/measurement
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+
+{
+  "name": "KG"
+}
+
+###
+POST http://localhost/api/supplier
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+
+{
+  "name": "Jafar"
+}
+
+###
+POST http://localhost/api/product
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+
+{
+  "name": "Samsung",
+  "catId": 1,
+  "measureId": 1
+}
 
 
 ###
@@ -32,5 +69,29 @@ GET http://localhost:8080/api/product/allProduct
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU5MjE2MDcsImV4cCI6MTYzNjI4MTYwN30.6DLR-Cu0sjDryiulR8yp1_I0kpsEVsdew7s27eS4hUzaKtXBlzoTIgbGXTZpeMdi4KKR1-Het5J7kbmXf5OYaw
 
+###
+POST http://localhost:80/api/input
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
 
+{
+  "warehouseId": 1,
+  "currencyId": 1,
+  "factureName": "N123",
+  "supplierId": 1,
+  "inputProductDTOS": [
+    {
+      "productId": 1,
+      "amount": 20,
+      "price": 300000,
+      "expireDate": "12-10-2021"
+    },
+    {
+      "productId": 2,
+      "amount": 10,
+      "price": 500000,
+      "expireDate": "17-10-2021"
+    }
+  ]
+}
 

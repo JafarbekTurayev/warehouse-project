@@ -20,6 +20,11 @@ public enum Permission {
     EDIT_WAREHOUSE,
     READ_WAREHOUSE,
 
+    ADD_OUTPUT,
+    DELETE_OUTPUT,
+    EDIT_OUTPUT,
+    READ_OUTPUT,
+
 
 
 }

@@ -17,7 +17,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMjk3OTEsImV4cCI6MTYzNjA2NTc5MX0.q-henRjd2m8Ok1CtR5IPGqNaXFFoU-pYfdfmrjSh8X_wkYX4XDs2TTZsOINn-W2GsIxXF50Q7XIosM6DmBZbmw
 
 {
-  "name": "Nomer3"
+  "name": "Nomer2"
 }
 
 

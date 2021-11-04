@@ -5,11 +5,15 @@ import com.example.warehouseapp.entity.Warehouse;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
-public class InputputDTO {
-    private Date date;
-    private Warehouse warehouse;
-    private Currency currency;
+public class InputDTO {
+    //    private String date;
+    private Integer warehouseId;
+    private Integer currencyId;
     private String factureName;
+    private Integer supplierId;
+
+    private List<InputProductDTO> inputProductDTOS;
 }

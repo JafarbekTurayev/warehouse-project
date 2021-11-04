@@ -23,7 +23,7 @@ public class ProductController {
     @PreAuthorize(value = "hasAuthority('ADD_PRODUCT')")
     @PostMapping
     public HttpEntity<?> addProduct(@RequestBody Product product) {
-        ApiResponse response = productService.saveRroduct(product);
+        ApiResponse response = productService.saveProduct(product);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 

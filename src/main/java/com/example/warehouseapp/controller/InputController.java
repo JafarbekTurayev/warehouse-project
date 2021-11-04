@@ -1,7 +1,7 @@
 package com.example.warehouseapp.controller;
 
 import com.example.warehouseapp.entity.Input;
-import com.example.warehouseapp.payload.responce.InputputDTO;
+import com.example.warehouseapp.payload.responce.InputDTO;
 import com.example.warehouseapp.repository.InputRepository;
 import com.example.warehouseapp.service.InputService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/login/input")
-public class InputController{
+public class InputController {
     @Autowired
     InputRepository inputRepository;
 
@@ -21,8 +21,8 @@ public class InputController{
     InputService inputService;
 
     @PostMapping
-    public HttpEntity<?> add(@RequestBody InputputDTO inputputDTO){
-        inputService.add(inputputDTO);
+    public HttpEntity<?> add(@RequestBody InputDTO inputputDTO) {
+//        inputService.add(inputputDTO);
 //        if (inputputDTO.getFactureName();
         return null;
     }

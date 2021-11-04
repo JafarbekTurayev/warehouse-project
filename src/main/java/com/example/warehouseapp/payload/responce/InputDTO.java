@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class InputputDTO {
+public class InputDTO {
     private Date date;
     private Warehouse warehouse;
     private Currency currency;

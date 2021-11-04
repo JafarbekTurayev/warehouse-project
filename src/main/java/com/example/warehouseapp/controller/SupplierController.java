@@ -16,8 +16,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/login/suplier")
-@PreAuthorize(value="hasAuthority(' READ_PRODUCT')")
-public class SuplierController {
+//@PreAuthorize(value="hasAuthority(' READ_PRODUCT')")
+public class SupplierController {
     @Autowired
     SupplierRepository supplierRepository;
     @Autowired
@@ -54,7 +54,7 @@ public class SuplierController {
     }
     @GetMapping("/search")
     public HttpEntity<?> search(@RequestParam String name) {
-        List<Supplier> list = supplierRepository.FindByNameStartsWithIgnoreCase(name);
+        List<Supplier> list = supplierRepository.findByNameStartsWithIgnoreCase(name);
         return ResponseEntity.ok(list);
     }
 

@@ -18,7 +18,7 @@ public class ProductService {
     ProductRepository productRepository;
 
 
-    public ApiResponse saveRroduct(Product product) {
+    public ApiResponse saveProduct(Product product) {
         if (!productRepository.existsByName(product.getName())) {
             productRepository.save(product);
             return new ApiResponse("Saved!", true);

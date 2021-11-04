@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface InputRepository extends JpaRepository<Input,Integer> {
 
-    List<Input> findByInput_Id(Integer supplier_id);
     List<Input> findByCurrency_Id(Integer currency_id);
 
 }

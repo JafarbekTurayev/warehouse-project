@@ -31,5 +31,4 @@ public class InputController {
         ApiResponse response = inputService.add(inputDTO);
         return ResponseEntity.ok(response);
     }
-
 }

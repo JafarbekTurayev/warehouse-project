@@ -2,11 +2,13 @@ package com.example.warehouseapp.service;
 
 import com.example.warehouseapp.entity.Category;
 import com.example.warehouseapp.payload.ApiResponse;
+import com.example.warehouseapp.payload.CategoryDTO;
 import com.example.warehouseapp.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -21,25 +23,19 @@ public class CategoryService {
         }else {
             return new ApiResponse("Bunday category mavjud!",false);
         }
-
     }
 
-    public ApiResponse delete(Category category) {
-        if(categoryRepository.existsByName(category.getName())){
-            categoryRepository.delete(category);
+    public ApiResponse delete(Integer id) {
+            categoryRepository.deleteById(id);
             return new ApiResponse("Deleted!",true);
-        }else {
-            return new ApiResponse("Category ni O`chirib Bo`lmadi!",false);
-        }
-
     }
 
-    public ApiResponse update(Category category) {
-        Category byIdCategory = categoryRepository.getById(category.getId());
-        byIdCategory.setName(category.getName());
-        byIdCategory.setActive(category.isActive());
-        byIdCategory.setParentCategory(category.getParentCategory());
-
+    public ApiResponse edit(Integer id, CategoryDTO categoryDTO) {
+        Category byIdCategory = categoryRepository.getById(id);
+        byIdCategory.setName(categoryDTO.getName());
+        byIdCategory.setActive(categoryDTO.isActive());
+        byIdCategory.setParentCategory(categoryDTO.getParentCategory());
+        categoryRepository.save(byIdCategory);
         return new ApiResponse("Updated!",true);
     }
 
@@ -47,5 +43,21 @@ public class CategoryService {
         List<Category> allCategory = categoryRepository.findAll();
         return allCategory;
     }
+
+    public Category getOneById(Integer id){
+        Category byId = categoryRepository.getById(id);
+        return byId;
+    }
+
+
+//    public boolean deleted(Integer id) {
+//        try {
+//            categoryRepository.deleteById(id);
+//            return true;
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
+
 }
 

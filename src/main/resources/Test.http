@@ -31,7 +31,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
 
 {
-  "name": "Samsung",
+  "name": "Huawei",
   "catId": 1,
   "measureId": 1
 }
@@ -72,26 +72,41 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 ###
 POST http://localhost:80/api/input
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYyMTAxODMsImV4cCI6MTYzNjI5NjU4M30.blPmbto3VdGmg5C94Yovviir36haDMNp3otOGmcNnChYXE6FTlZimmLAkRoPp8sRUWCKRSUaTFGlSYEkVN5o1g
 
 {
   "warehouseId": 1,
   "currencyId": 1,
-  "factureName": "N123",
+  "factureName": "N11",
   "supplierId": 1,
   "inputProductDTOS": [
     {
-      "productId": 1,
-      "amount": 20,
-      "price": 300000,
-      "expireDate": "12-10-2021"
+      "productId": 3,
+      "amount": 200,
+      "price": 3000,
+      "expireDate": "19-11-2021"
     },
     {
-      "productId": 2,
+      "productId": 4,
       "amount": 10,
-      "price": 500000,
+      "price": 50000,
       "expireDate": "17-10-2021"
     }
   ]
 }
 
+
+###get all
+GET http://localhost/api/input/all?page=0&size=2
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYyMTAxODMsImV4cCI6MTYzNjI5NjU4M30.blPmbto3VdGmg5C94Yovviir36haDMNp3otOGmcNnChYXE6FTlZimmLAkRoPp8sRUWCKRSUaTFGlSYEkVN5o1g
+
+###get from to
+GET http://localhost/api/input?from=05-11-2021&to=15-11-2021
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYyMTAxODMsImV4cCI6MTYzNjI5NjU4M30.blPmbto3VdGmg5C94Yovviir36haDMNp3otOGmcNnChYXE6FTlZimmLAkRoPp8sRUWCKRSUaTFGlSYEkVN5o1g
+
+### get search
+GET http://localhost:80/api/input/searchType?type=daily&date=04-11-2021
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYyMTAxODMsImV4cCI6MTYzNjI5NjU4M30.blPmbto3VdGmg5C94Yovviir36haDMNp3otOGmcNnChYXE6FTlZimmLAkRoPp8sRUWCKRSUaTFGlSYEkVN5o1g

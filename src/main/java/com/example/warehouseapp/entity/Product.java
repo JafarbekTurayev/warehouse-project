@@ -20,10 +20,10 @@ import javax.persistence.OneToOne;
 public class Product extends AbsEntity {
 
     @ManyToOne
-    private  Category category;
+    private Category category;
     @OneToOne
-    private Attachment photoId;
-    @Column(nullable = false,unique = true)
+    private Attachment photo;
+    @Column(nullable = false, unique = true)
     private String code;
     @ManyToOne
     private Measurement measurement;

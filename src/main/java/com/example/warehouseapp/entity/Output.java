@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -27,5 +28,7 @@ public class Output {
 
     @ManyToOne
     private Client client;
+    @OneToMany(mappedBy = "output", cascade = CascadeType.ALL)
+    private List<OutputProduct> outputProductList;
 
 }

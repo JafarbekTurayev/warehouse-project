@@ -8,10 +8,8 @@ import com.example.warehouseapp.service.SupplierServise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,7 +22,7 @@ public class SupplierController {
     SupplierServise supplierServise;
 
     @PostMapping
-    public HttpEntity<?> add(@Valid @RequestBody Supplier supplier){
+    public HttpEntity<?> add(@RequestBody SupplierDTO supplier){
         ApiResponse apiResponse = supplierServise.add(supplier);
         return ResponseEntity.status(apiResponse.isSuccess() ? 201 : 409).body(apiResponse);
     }
@@ -52,11 +50,5 @@ public class SupplierController {
         supplierRepository.deleteById(id);
         return ResponseEntity.ok("OK");
     }
-    @GetMapping("/search")
-    public HttpEntity<?> search(@RequestParam String name) {
-        List<Supplier> list = supplierRepository.findByNameStartsWithIgnoreCase(name);
-        return ResponseEntity.ok(list);
-    }
-
 
 }

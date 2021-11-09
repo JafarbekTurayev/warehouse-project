@@ -1,19 +1,24 @@
 package com.example.warehouseapp.service;
 
 import com.example.warehouseapp.entity.*;
+import com.example.warehouseapp.entity.Currency;
 import com.example.warehouseapp.payload.ApiResponse;
+import com.example.warehouseapp.payload.ResInputDTO;
+import com.example.warehouseapp.payload.ResInputProductDTO;
 import com.example.warehouseapp.payload.responce.InputDTO;
 import com.example.warehouseapp.payload.responce.InputProductDTO;
 import com.example.warehouseapp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class InputService {
@@ -68,5 +73,89 @@ public class InputService {
         input.setInputProductList(inputProductList);
         inputRepository.save(input);
         return new ApiResponse("Saved!", true, input);
+    }
+
+    public ApiResponse getAll(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<Input> all = inputRepository.findAll(pageable);
+        Page<ResInputDTO> resInputDTOS = new PageImpl<>(
+                all.getContent().stream().map(this::getResInput).collect(Collectors.toList()),
+                all.getPageable(),
+                all.getTotalElements()
+        );
+
+        return new ApiResponse("Mana", true, resInputDTOS);
+    }
+
+    public ResInputDTO getResInput(Input input) {
+
+        return new ResInputDTO(
+                input.getDate(),
+                input.getWarehouse().getName(),
+                input.getSupplier().getName(),
+                input.getCurrency().getName(),
+                input.getFactureNumber(),
+                input.getInputProductList().stream().map(this::getResInputProductDTO).collect(Collectors.toList()),
+                input.getInputProductList().stream().map(this::getSumma).reduce(Double.valueOf(0), (item, i) -> item + i)
+        );
+    }
+
+    private double getSumma(InputProduct inputProduct) {
+        return inputProduct.getPrice() * inputProduct.getAmount();//20* 10000
+    }
+
+    public ResInputProductDTO getResInputProductDTO(InputProduct inputProduct) {
+        return new ResInputProductDTO(
+                inputProduct.getProduct().getName(),
+                inputProduct.getAmount(),
+                inputProduct.getPrice(),
+                inputProduct.getExpireDate()
+        );
+    }
+
+    public ApiResponse getAllFromTo(String from, String to) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date fromDate = dateFormat.parse(from);
+        Date toDate = dateFormat.parse(to);
+        List<Input> allByDateBetween = inputRepository.findAllByDateBetween(fromDate, toDate);
+
+        List<ResInputDTO> collect = allByDateBetween.stream().map(this::getResInput).collect(Collectors.toList());
+
+        return new ApiResponse("Mana", true, collect);
+    }
+
+    public ApiResponse getAllSearchType(String type, String date) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date fromDate = dateFormat.parse(date);
+        Date toDate = dateFormat.parse(date);
+
+        List<Input> allByDate = new ArrayList<>();
+        Calendar c = GregorianCalendar.getInstance();
+        c.setTime(fromDate);
+        if (type.equals("daily")) {
+            //kunlik
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+//            Date fromDate = dateFormat.parse(date);
+//            Date toDate = dateFormat.parse(date);
+            allByDate = inputRepository.findAllByDateBetween(fromDate, toDate);
+
+        } else if (type.equals("weekly")) {
+            c.add(Calendar.DATE, 7);
+            toDate = c.getTime();
+            allByDate = inputRepository.findAllByDateBetween(fromDate, toDate);
+
+        } else {
+            //oylik
+            c.add(Calendar.MONTH, 1);
+            toDate = c.getTime();
+
+            allByDate = inputRepository.findAllByDateBetween(fromDate, toDate);
+        }
+
+        List<ResInputDTO> collect = allByDate.stream().map(this::getResInput).collect(Collectors.toList());
+
+        return new ApiResponse("Mana", true, collect);
+
     }
 }

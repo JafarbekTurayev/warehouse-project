@@ -8,11 +8,9 @@ import com.example.warehouseapp.service.InputService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
 import java.text.ParseException;
 
 @RestController
@@ -27,8 +25,32 @@ public class InputController {
     //kirim
     @PostMapping
     public HttpEntity<?> add(@RequestBody InputDTO inputDTO) throws ParseException {
-
         ApiResponse response = inputService.add(inputDTO);
+        return ResponseEntity.ok(response);
+    }
+
+    //getAll
+
+    @GetMapping("/all")
+    public HttpEntity<?> getAll(@RequestParam int page, @RequestParam int size) {
+        ApiResponse response = inputService.getAll(page, size);
+        return ResponseEntity.ok(response);
+    }
+
+    //getONE
+
+
+    //from to
+    @GetMapping()
+    public HttpEntity<?> getAllFromTO(@RequestParam String from, @RequestParam String to) throws ParseException {
+        ApiResponse response = inputService.getAllFromTo(from, to);
+        return ResponseEntity.ok(response);
+    }
+
+    //kunlik haftalik oylik
+    @GetMapping("/searchType") //daily monthly weekly
+    public HttpEntity<?> getAllSearchType(@RequestParam String type, @RequestParam String date) throws ParseException {
+        ApiResponse response = inputService.getAllSearchType(type, date);
         return ResponseEntity.ok(response);
     }
 

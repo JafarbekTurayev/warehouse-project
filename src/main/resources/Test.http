@@ -129,3 +129,12 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 GET http://localhost:80/api/input/searchType?type=daily&date=04-11-2021
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYyMTAxODMsImV4cCI6MTYzNjI5NjU4M30.blPmbto3VdGmg5C94Yovviir36haDMNp3otOGmcNnChYXE6FTlZimmLAkRoPp8sRUWCKRSUaTFGlSYEkVN5o1g
+
+###
+POST http://localhost/api/measurement
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+
+{
+"name": "kg"
+}

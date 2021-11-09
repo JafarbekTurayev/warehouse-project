@@ -2,6 +2,7 @@ package com.example.warehouseapp.service;
 
 import com.example.warehouseapp.entity.Supplier;
 import com.example.warehouseapp.payload.ApiResponse;
+import com.example.warehouseapp.payload.SupplierDTO;
 import com.example.warehouseapp.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,11 @@ public class SupplierServise {
     @Autowired
     SupplierRepository supplierRepository;
 
-    public ApiResponse add(Supplier supplier) {
-        if (!supplierRepository.existsByPhoneNumber(supplier.getName())) {
+    public ApiResponse add(SupplierDTO supplierDTO) {
+            Supplier supplier = new Supplier();
+        if (!supplierRepository.existsByPhoneNumber(supplierDTO.getName())) {
+            supplier.setName(supplierDTO.getName());
+            supplier.setPhoneNumber(supplierDTO.getPhoneNumber());
             supplierRepository.save(supplier);
             return new ApiResponse("Saved!", true);
         }

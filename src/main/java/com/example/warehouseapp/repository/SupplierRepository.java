@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
     boolean existsByPhoneNumber(String phoneNumber);
-   List<Supplier> findByNameStartsWithIgnoreCase(String name);
+
 }

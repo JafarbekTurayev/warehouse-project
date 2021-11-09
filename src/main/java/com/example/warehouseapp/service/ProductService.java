@@ -58,16 +58,15 @@ public class ProductService {
         return byId.orElse(null);
     }
 
-    public Product editProduct(Integer id, Product product) {
+    public Product editProduct(Integer id, ProductDTO productDTO) {
         Optional<Product> byId = productRepository.findById(id);
+        Optional<Measurement> optionalMeasurement = measurementRepository.findById(productDTO.getCatId());
+        Optional<Category> optionalCategory = categoryRepository.findById(productDTO.getCatId());
         if (byId.isPresent()) {
             Product editProduct = byId.get();
-            editProduct.setName(product.getName());
-            editProduct.setCode(product.getCode());
-            editProduct.setCategory(product.getCategory());
-            editProduct.setMeasurement(product.getMeasurement());
-            editProduct.setPhoto(product.getPhoto());
-            editProduct.setActive(product.isActive());
+            editProduct.setName(productDTO.getName());
+            editProduct.setCategory(optionalCategory.get());
+            editProduct.setMeasurement(optionalMeasurement.get());
             return productRepository.save(editProduct);
         }
         return null;

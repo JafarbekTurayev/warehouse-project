@@ -1,10 +1,29 @@
-POST http://localhost/api/category
+POST http://localhost:8081/api/category
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY0NjE2ODYsImV4cCI6MTYzNzMyNTY4Nn0.YnPmpSE9UFw7WUDa7bts0O29M1B7Q4Uz1uH_0Et16sZ5Wed-qio8tewh-YkjI96FqGYjOf6buCdGi6Ayz1HikA
 
 {
-  "name": "Texnika"
+  "name": "Oziq-ovqat"
 }
+
+###
+GET http://localhost:8081/api/category
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY0NjE2ODYsImV4cCI6MTYzNzMyNTY4Nn0.YnPmpSE9UFw7WUDa7bts0O29M1B7Q4Uz1uH_0Et16sZ5Wed-qio8tewh-YkjI96FqGYjOf6buCdGi6Ayz1HikA
+
+###
+PUT http://localhost:8081/api/category/4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY0NjE2ODYsImV4cCI6MTYzNzMyNTY4Nn0.YnPmpSE9UFw7WUDa7bts0O29M1B7Q4Uz1uH_0Et16sZ5Wed-qio8tewh-YkjI96FqGYjOf6buCdGi6Ayz1HikA
+
+{
+  "name": "MebelUpdated"
+}
+
+###
+DELETE http://localhost:8081/api/category/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY0NjE2ODYsImV4cCI6MTYzNzMyNTY4Nn0.YnPmpSE9UFw7WUDa7bts0O29M1B7Q4Uz1uH_0Et16sZ5Wed-qio8tewh-YkjI96FqGYjOf6buCdGi6Ayz1HikA
 
 ###
 
@@ -38,7 +57,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 
 
 ###
-POST http://localhost/api/auth/login
+POST http://localhost:8081/api/auth/login
 Content-Type: application/json
 
 {
@@ -49,7 +68,7 @@ Content-Type: application/json
 ###super eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU4NjY0MjYsImV4cCI6MTYzNTkwMjQyNn0.ckd4f4pvGm24oBMkGwt08fg7DD51qdl27RNCyd9iuqGdIe4VrWqwTwg87qTzm-NXrG8ztuSW_IqcUvL5FfsFoQ
 ###
 #add warehouse
-POST http://localhost:80/api/warehouse
+POST http://localhost:8081/api/warehouse
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU4NjY0MjYsImV4cCI6MTYzNTkwMjQyNn0.ckd4f4pvGm24oBMkGwt08fg7DD51qdl27RNCyd9iuqGdIe4VrWqwTwg87qTzm-NXrG8ztuSW_IqcUvL5FfsFoQ
 

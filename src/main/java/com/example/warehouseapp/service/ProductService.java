@@ -3,6 +3,7 @@ package com.example.warehouseapp.service;
 import com.example.warehouseapp.entity.Category;
 import com.example.warehouseapp.entity.Measurement;
 import com.example.warehouseapp.entity.Product;
+import com.example.warehouseapp.exception.ResourceNotFoundException;
 import com.example.warehouseapp.payload.ApiResponse;
 import com.example.warehouseapp.payload.ProductDTO;
 import com.example.warehouseapp.repository.CategoryRepository;
@@ -33,6 +34,10 @@ public class ProductService {
             Optional<Measurement> optionalMeasurement = measurementRepository.findById(productDTO.getMeasureId());
 
             Optional<Category> optionalCategory = categoryRepository.findById(productDTO.getCatId());
+//            Category category = categoryRepository.findById(productDTO.getCatId())
+//                    .orElseThrow(() -> new ResourceNotFoundException("category", "id", productDTO.getCatId()));
+
+//            product.setCategory(category);
             product.setCategory(optionalCategory.get());
             product.setMeasurement(optionalMeasurement.get());
 

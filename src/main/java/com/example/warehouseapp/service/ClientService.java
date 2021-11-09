@@ -15,10 +15,12 @@ public class ClientService {
     ClientRepository clientRepository;
 
     public ApiResponse edd(ClientDto clientDto) {
+
         Client client = new Client();
         client.setName(clientDto.getName());
         client.setPhoneNumber(clientDto.getPhoneNumber());
         Client save = clientRepository.save(client);
+
         return new  ApiResponse("Saved",true);
     }
 
@@ -28,6 +30,7 @@ public class ClientService {
         }
 
         Optional<Client> optionalClient = clientRepository.findById(id);
+        
         optionalClient.get().setName(clientDto.getName());
         optionalClient.get().setPhoneNumber(clientDto.getPhoneNumber());
         Client save = clientRepository.save(optionalClient.get());

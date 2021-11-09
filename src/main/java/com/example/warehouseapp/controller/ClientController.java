@@ -32,7 +32,7 @@ public class ClientController {
         if (!phoneNumberClient) {
             return ResponseEntity.ok("Not Found");
         }
-        return  ResponseEntity.ok("Such a phone has a digital client!");
+        return  ResponseEntity.ok(((String.valueOf(phoneNumberClient))));
     }
     @GetMapping("/all")
     public HttpEntity<?> getAll(){
@@ -41,10 +41,11 @@ public class ClientController {
     }
     @DeleteMapping("{id}")
     public HttpEntity<?>remove(@PathVariable Integer id){
+        if (!clientRepository.findById(id).isPresent()){return ResponseEntity.ok("Not Fount");}
         clientRepository.deleteById(id);
         return ResponseEntity.ok("Deleted");
     }
-    @PutMapping("edit")
+    @PutMapping("{id}")
     public HttpEntity<?>editClient(@PathVariable Integer id,@RequestBody ClientDto clientDto){
         ApiResponse responseEdit =  clientService.edit(id,clientDto);
         return ResponseEntity.status(responseEdit.isSuccess() ? 200 : 404).body(responseEdit);

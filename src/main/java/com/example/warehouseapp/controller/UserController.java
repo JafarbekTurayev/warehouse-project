@@ -15,21 +15,21 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
     UserService userService;
 
     @PreAuthorize(value = "hasAuthority('ADD_USER')")
-    @PostMapping("/user")
+    @PostMapping()
     public HttpEntity<?> addUser(@RequestBody UserDto userDto){
         ApiResponse response = userService.saveUser(userDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
     @PreAuthorize(value = "hasAuthority('READ_USER')")
-    @GetMapping("/allUser")
+    @GetMapping("/all")
     public HttpEntity<?> getAll(){
         List<User> all = userService.getALL();
         return ResponseEntity.ok(all);

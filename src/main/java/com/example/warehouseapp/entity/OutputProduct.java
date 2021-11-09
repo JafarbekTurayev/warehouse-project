@@ -17,7 +17,7 @@ public class OutputProduct {
     @ManyToOne
     private Product product;
     private Double amount;
-    private Double price;
+    private Integer price;
     @ManyToOne
     private  Output output;
 }

@@ -17,40 +17,46 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     public ApiResponse save(CategoryDTO categoryDTO) {
-        if(!categoryRepository.existsByName(categoryDTO.getName())){
-            Optional<Category> categoryParentId = categoryRepository.findById(categoryDTO.getParentCategoryId());
+        Optional<Category> categoryParentId = null;
+        if (categoryDTO.getParentCategoryId() != null) {
+            categoryParentId = categoryRepository.findById(categoryDTO.getParentCategoryId());
+        }
+        if (!categoryRepository.existsByName(categoryDTO.getName())) {
             Category category = new Category();
             category.setName(categoryDTO.getName());
-            category.setParentCategory(categoryParentId.get());
+            if (categoryParentId.isPresent()) {
+                category.setParentCategory(categoryParentId.get());
+            } else {
+                category.setParentCategory(null);
+            }
             categoryRepository.save(category);
-            return new ApiResponse("Saved!",true);
-        }else {
-            return new ApiResponse("Bunday category mavjud!",false);
+            return new ApiResponse("Saved!", true);
+        } else {
+            return new ApiResponse("Bunday category mavjud!", false);
         }
     }
 
     public ApiResponse delete(Integer id) {
-            categoryRepository.deleteById(id);
-            return new ApiResponse("Deleted!",true);
+        categoryRepository.deleteById(id);
+        return new ApiResponse("Deleted!", true);
     }
 
     public ApiResponse edit(Integer id, CategoryDTO categoryDTO) {
         Category byIdCategory = categoryRepository.getById(id);
         byIdCategory.setName(categoryDTO.getName());
-        byIdCategory.setActive(categoryDTO.isActive());
         byIdCategory.setParentCategory(byIdCategory.getParentCategory());
         categoryRepository.save(byIdCategory);
-        return new ApiResponse("Updated!",true,byIdCategory);
+        return new ApiResponse("Updated!", true, byIdCategory);
     }
 
     public List<Category> getAll() {
         List<Category> allCategory = categoryRepository.findAll();
-        return (List<Category>) new ApiResponse("Mana",true,allCategory);
+        return (List<Category>) new ApiResponse("Mana", true, allCategory);
     }
 
-    public ApiResponse getOneById(Integer id){
+    public ApiResponse getOneById(Integer id) {
         Category byId = categoryRepository.getById(id);
-        return new ApiResponse("Mana",true,byId);
+        return new ApiResponse("Mana", true, byId);
     }
 
 }

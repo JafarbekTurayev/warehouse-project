@@ -34,7 +34,23 @@ public class DataLoader implements CommandLineRunner {
             Permission[] values = Permission.values();
             Set<Permission> permissionSet = new HashSet<Permission>(Arrays.asList(values));
 
-            Role admin = roleRepository.save(new Role(1, "ADMIN", true,permissionSet));
+            Role admin = roleRepository.save(new Role(1, "ADMIN", true, permissionSet));
+            Role user = roleRepository.save(new Role(2, "USER", true, new HashSet<>(
+                    Arrays.asList(
+                            Permission.READ_CATEGORY,
+                            Permission.READ_PRODUCT,
+                            Permission.READ_WAREHOUSE,
+                            Permission.READ_USERS
+                    ))));
+            Role manager = roleRepository.save(new Role(3, "MANAGER", true,
+                    new HashSet<>(
+                            Arrays.asList(
+                                    Permission.ADD_CATEGORY,
+                                    Permission.ADD_PRODUCT,
+                                    Permission.ADD_WAREHOUSE,
+                                    Permission.ADD_USER
+                            )
+                    )));
 
             userRepository.save(new User("Superadmin",
                     "super",

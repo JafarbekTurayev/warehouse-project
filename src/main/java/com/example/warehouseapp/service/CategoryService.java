@@ -2,11 +2,13 @@ package com.example.warehouseapp.service;
 
 import com.example.warehouseapp.entity.Category;
 import com.example.warehouseapp.payload.ApiResponse;
+import com.example.warehouseapp.payload.CategoryDTO;
 import com.example.warehouseapp.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -14,38 +16,42 @@ public class CategoryService {
     @Autowired
     CategoryRepository categoryRepository;
 
-    public ApiResponse save(Category category) {
-        if(!categoryRepository.existsByName(category.getName())){
+    public ApiResponse save(CategoryDTO categoryDTO) {
+        if(!categoryRepository.existsByName(categoryDTO.getName())){
+            Optional<Category> categoryParentId = categoryRepository.findById(categoryDTO.getParentCategoryId());
+            Category category = new Category();
+            category.setName(categoryDTO.getName());
+            category.setParentCategory(categoryParentId.get());
             categoryRepository.save(category);
             return new ApiResponse("Saved!",true);
         }else {
             return new ApiResponse("Bunday category mavjud!",false);
         }
-
     }
 
-    public ApiResponse delete(Category category) {
-        if(categoryRepository.existsByName(category.getName())){
-            categoryRepository.delete(category);
+    public ApiResponse delete(Integer id) {
+            categoryRepository.deleteById(id);
             return new ApiResponse("Deleted!",true);
-        }else {
-            return new ApiResponse("Category ni O`chirib Bo`lmadi!",false);
-        }
-
     }
 
-    public ApiResponse update(Category category) {
-        Category byIdCategory = categoryRepository.getById(category.getId());
-        byIdCategory.setName(category.getName());
-        byIdCategory.setActive(category.isActive());
-        byIdCategory.setParentCategory(category.getParentCategory());
-
-        return new ApiResponse("Updated!",true);
+    public ApiResponse edit(Integer id, CategoryDTO categoryDTO) {
+        Category byIdCategory = categoryRepository.getById(id);
+        byIdCategory.setName(categoryDTO.getName());
+        byIdCategory.setActive(categoryDTO.isActive());
+        byIdCategory.setParentCategory(byIdCategory.getParentCategory());
+        categoryRepository.save(byIdCategory);
+        return new ApiResponse("Updated!",true,byIdCategory);
     }
 
     public List<Category> getAll() {
         List<Category> allCategory = categoryRepository.findAll();
-        return allCategory;
+        return (List<Category>) new ApiResponse("Mana",true,allCategory);
     }
+
+    public ApiResponse getOneById(Integer id){
+        Category byId = categoryRepository.getById(id);
+        return new ApiResponse("Mana",true,byId);
+    }
+
 }
 

@@ -6,6 +6,7 @@ import com.example.warehouseapp.payload.CategoryDTO;
 import com.example.warehouseapp.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +21,8 @@ public class CategoryController {
     CategoryService categoryService;
 
     @PostMapping
-    public HttpEntity<?>addCategory(@RequestBody Category category){
-        ApiResponse response = categoryService.save(category);
+    public HttpEntity<?>addCategory(@RequestBody CategoryDTO categoryDTO){
+        ApiResponse response = categoryService.save(categoryDTO);
         return ResponseEntity.status(response.isSuccess() ? 201:409).body(response);
     }
 
@@ -33,7 +34,7 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public HttpEntity<?> getOneCategory(@PathVariable Integer id){
-        Category oneById = categoryService.getOneById(id);
+        ApiResponse oneById = categoryService.getOneById(id);
         return ResponseEntity.ok(oneById);
     }
 
@@ -41,9 +42,7 @@ public class CategoryController {
     @DeleteMapping("/{id}")
     public HttpEntity<?> deleteCategory(@PathVariable Integer id ){
             ApiResponse deleted = categoryService.delete(id);
-            if (deleted.isSuccess())
-                return ResponseEntity.noContent().build();
-            return ResponseEntity.notFound().build();
+            return  ResponseEntity.ok(deleted);
     }
 
     @PutMapping("/{id}")

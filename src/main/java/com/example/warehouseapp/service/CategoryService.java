@@ -16,8 +16,12 @@ public class CategoryService {
     @Autowired
     CategoryRepository categoryRepository;
 
-    public ApiResponse save(Category category) {
-        if(!categoryRepository.existsByName(category.getName())){
+    public ApiResponse save(CategoryDTO categoryDTO) {
+        if(!categoryRepository.existsByName(categoryDTO.getName())){
+            Optional<Category> categoryParentId = categoryRepository.findById(categoryDTO.getParentCategoryId());
+            Category category = new Category();
+            category.setName(categoryDTO.getName());
+            category.setParentCategory(categoryParentId.get());
             categoryRepository.save(category);
             return new ApiResponse("Saved!",true);
         }else {
@@ -34,30 +38,20 @@ public class CategoryService {
         Category byIdCategory = categoryRepository.getById(id);
         byIdCategory.setName(categoryDTO.getName());
         byIdCategory.setActive(categoryDTO.isActive());
-        byIdCategory.setParentCategory(categoryDTO.getParentCategory());
+        byIdCategory.setParentCategory(byIdCategory.getParentCategory());
         categoryRepository.save(byIdCategory);
-        return new ApiResponse("Updated!",true);
+        return new ApiResponse("Updated!",true,byIdCategory);
     }
 
     public List<Category> getAll() {
         List<Category> allCategory = categoryRepository.findAll();
-        return allCategory;
+        return (List<Category>) new ApiResponse("Mana",true,allCategory);
     }
 
-    public Category getOneById(Integer id){
+    public ApiResponse getOneById(Integer id){
         Category byId = categoryRepository.getById(id);
-        return byId;
+        return new ApiResponse("Mana",true,byId);
     }
-
-
-//    public boolean deleted(Integer id) {
-//        try {
-//            categoryRepository.deleteById(id);
-//            return true;
-//        } catch (Exception e) {
-//            return false;
-//        }
-//    }
 
 }
 

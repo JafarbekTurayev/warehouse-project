@@ -41,8 +41,8 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> editProduct(@PathVariable Integer id, @RequestBody Product product){
-        Product edited = productService.editProduct(id,product);
+    public HttpEntity<?> editProduct(@PathVariable Integer id, @RequestBody ProductDTO productDTO){
+        Product edited = productService.editProduct(id,productDTO);
         return ResponseEntity.status(edited!=null?202:409).body(edited);
     }
     @DeleteMapping("/{id}")

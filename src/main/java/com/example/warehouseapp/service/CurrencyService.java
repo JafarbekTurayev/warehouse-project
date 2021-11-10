@@ -14,25 +14,25 @@ public class CurrencyService {
     @Autowired
     CurrencyRepository currencyRepository;
 
-    public ApiResponse edd(CurrencyDto currencyDto) {
+    public ApiResponse add(CurrencyDto currencyDto) {
         Currency currency = new Currency();
         currency.setName(currencyDto.getName());
         currency.setActive(currencyDto.isActive());
         Currency save = currencyRepository.save(currency);
-        return new ApiResponse("Saved",true);
+        return new ApiResponse("Saved", true);
 
     }
 
     public ApiResponse edit(Integer id, CurrencyDto currencyDto) {
-        if (!currencyRepository.existsById(id)){
-            return new ApiResponse("Not Found ",false);
+        if (!currencyRepository.existsById(id)) {
+            return new ApiResponse("Not Found ", false);
         }
 
         Optional<Currency> optionalCurrency = currencyRepository.findById(id);
         optionalCurrency.get().setName(currencyDto.getName());
         optionalCurrency.get().setActive(currencyDto.isActive());
         Currency save = currencyRepository.save(optionalCurrency.get());
-        return new ApiResponse("Edited",true);
+        return new ApiResponse("Edited", true);
 
     }
 }

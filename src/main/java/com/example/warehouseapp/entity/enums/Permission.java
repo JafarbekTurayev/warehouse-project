@@ -26,4 +26,6 @@ public enum Permission {
     EDIT_CATEGORY,
     READ_CATEGORY,
 
+
+
 }

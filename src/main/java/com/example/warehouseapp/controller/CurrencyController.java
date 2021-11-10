@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/currency")
+@RequestMapping("/api/currency")
 public class CurrencyController {
     @Autowired
     CurrencyService currencyService;
@@ -22,31 +22,36 @@ public class CurrencyController {
     CurrencyRepository currencyRepository;
 
     @PostMapping
-    public HttpEntity<?>addCurrency(@RequestBody CurrencyDto currencyDto){
-        ApiResponse responseCurrency = currencyService.edd(currencyDto);
+    public HttpEntity<?> addCurrency(@RequestBody CurrencyDto currencyDto) {
+        //bir xil nomli qo'shilmasin
+        ApiResponse responseCurrency = currencyService.add(currencyDto);
         return ResponseEntity.ok(responseCurrency);
     }
+
     @GetMapping("{name}")
-    public HttpEntity<?>getName(@PathVariable String name){
-       boolean nameCurrency = currencyRepository.existsByName(name);
+    public HttpEntity<?> getName(@PathVariable String name) {
+        boolean nameCurrency = currencyRepository.existsByName(name);
         if (!nameCurrency) {
             return ResponseEntity.ok("Not Found");
         }
-        return  ResponseEntity.ok("Currency yes!");
+        return ResponseEntity.ok("Currency yes!");
     }
+
     @GetMapping("/all")
-    public HttpEntity<?> getAll(){
+    public HttpEntity<?> getAll() {
         List<Currency> currencies = currencyRepository.findAll();
         return ResponseEntity.ok(currencies);
     }
+
     @DeleteMapping("{id}")
-    public HttpEntity<?>remove(@PathVariable Integer id){
+    public HttpEntity<?> remove(@PathVariable Integer id) {
         currencyRepository.deleteById(id);
         return ResponseEntity.ok("Deleted");
     }
-    @PutMapping("edit")
-    public HttpEntity<?>editCurrency(@PathVariable Integer id,@RequestBody CurrencyDto currencyDto){
-      ApiResponse responseEdit =  currencyService.edit(id,currencyDto);
+
+    @PutMapping("/edit/{id}")
+    public HttpEntity<?> editCurrency(@PathVariable Integer id, @RequestBody CurrencyDto currencyDto) {
+        ApiResponse responseEdit = currencyService.edit(id, currencyDto);
         return ResponseEntity.status(responseEdit.isSuccess() ? 200 : 404).body(responseEdit);
     }
 }

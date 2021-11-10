@@ -18,10 +18,14 @@ public class CategoryService {
 
     public ApiResponse save(CategoryDTO categoryDTO) {
         if(!categoryRepository.existsByName(categoryDTO.getName())){
-            Optional<Category> categoryParentId = categoryRepository.findById(categoryDTO.getParentCategoryId());
+            Optional<Category> categoryRepositoryById = categoryRepository.findById(categoryDTO.getParentCategoryId());
             Category category = new Category();
+            if(categoryRepositoryById.isPresent()){
+                category.setParentCategory(categoryRepositoryById.get());
+            }else {
+                category.setParentCategory(null);
+            }
             category.setName(categoryDTO.getName());
-            category.setParentCategory(categoryParentId.get());
             categoryRepository.save(category);
             return new ApiResponse("Saved!",true);
         }else {
@@ -37,7 +41,6 @@ public class CategoryService {
     public ApiResponse edit(Integer id, CategoryDTO categoryDTO) {
         Category byIdCategory = categoryRepository.getById(id);
         byIdCategory.setName(categoryDTO.getName());
-        byIdCategory.setActive(categoryDTO.isActive());
         byIdCategory.setParentCategory(byIdCategory.getParentCategory());
         categoryRepository.save(byIdCategory);
         return new ApiResponse("Updated!",true,byIdCategory);

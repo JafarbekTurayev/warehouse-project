@@ -7,7 +7,6 @@ import lombok.Data;
 public class CategoryDTO {
 //    private Integer id;
     private String name;
-    private boolean active = true;
     private Integer parentCategoryId;
 
 }

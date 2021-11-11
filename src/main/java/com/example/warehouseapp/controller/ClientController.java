@@ -50,4 +50,7 @@ public class ClientController {
         ApiResponse responseEdit =  clientService.edit(id,clientDto);
         return ResponseEntity.status(responseEdit.isSuccess() ? 200 : 404).body(responseEdit);
     }
+
+    //client Id barcha sotib olgan narsalari history
+    //Axror
 }

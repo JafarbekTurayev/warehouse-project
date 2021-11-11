@@ -148,7 +148,6 @@ public class InputService {
             //oylik
             c.add(Calendar.MONTH, 1);
             toDate = c.getTime();
-
             allByDate = inputRepository.findAllByDateBetween(fromDate, toDate);
         }
 

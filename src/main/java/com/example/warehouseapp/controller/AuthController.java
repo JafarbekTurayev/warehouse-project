@@ -46,4 +46,11 @@ public class AuthController {
         String token = jwtProvider.generateToken(user.getUsername());
         return ResponseEntity.ok(token);
     }
+
+    //editPhone
+    //editpassword
+
+    //Shaxzod
+
+
 }

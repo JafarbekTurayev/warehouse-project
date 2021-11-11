@@ -148,7 +148,6 @@ public class InputService {
             //oylik
             c.add(Calendar.MONTH, 1);
             toDate = c.getTime();
-
             allByDate = inputRepository.findAllByDateBetween(fromDate, toDate);
         }
 
@@ -156,5 +155,10 @@ public class InputService {
 
         return new ApiResponse("Mana", true, collect);
 
+    }
+
+    public ApiResponse getById(Integer id) {
+        Optional<Input> input= inputRepository.findById(id);
+        return new ApiResponse("Id",true,input.get());
     }
 }

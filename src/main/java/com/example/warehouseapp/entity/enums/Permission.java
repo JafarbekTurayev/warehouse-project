@@ -1,6 +1,6 @@
 package com.example.warehouseapp.entity.enums;
 
-public enum Permission {
+public enum     Permission {
 
     //xodim qo'shish
     ADD_USER,

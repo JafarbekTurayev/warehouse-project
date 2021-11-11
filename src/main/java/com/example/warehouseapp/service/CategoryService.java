@@ -7,6 +7,7 @@ import com.example.warehouseapp.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,22 +18,19 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     public ApiResponse save(CategoryDTO categoryDTO) {
-        Optional<Category> categoryParentId = null;
-        if (categoryDTO.getParentCategoryId() != null) {
-            categoryParentId = categoryRepository.findById(categoryDTO.getParentCategoryId());
-        }
-        if (!categoryRepository.existsByName(categoryDTO.getName())) {
-            Category category = new Category();
+        Category parentCategory = null;
+       Category category = new Category();
+        if(!categoryRepository.existsByName(categoryDTO.getName())) {
             category.setName(categoryDTO.getName());
-            if (categoryParentId.isPresent()) {
-                category.setParentCategory(categoryParentId.get());
-            } else {
-                category.setParentCategory(null);
-            }
-            categoryRepository.save(category);
-            return new ApiResponse("Saved!", true);
+            if (categoryDTO.getParentCategoryId()!=null){
+                parentCategory = categoryRepository.getById(categoryDTO.getParentCategoryId());
+        }
+            category.setParentCategory(parentCategory);
+            Category save = categoryRepository.save(category);
+            return new ApiResponse("Saved!", true,save);
         } else {
-            return new ApiResponse("Bunday category mavjud!", false);
+            Category byName = categoryRepository.findByName(categoryDTO.getName());
+            return new ApiResponse("Bunday category mavjud!", false,byName);
         }
     }
 
@@ -49,15 +47,19 @@ public class CategoryService {
         return new ApiResponse("Updated!", true, byIdCategory);
     }
 
-    public List<Category> getAll() {
-        List<Category> allCategory = categoryRepository.findAll();
-        return (List<Category>) new ApiResponse("Mana", true, allCategory);
+    public ApiResponse getAll() {
+        List<Category> all = categoryRepository.findAll();
+        return  new ApiResponse("Mana", true,all);
     }
 
     public ApiResponse getOneById(Integer id) {
-        Category byId = categoryRepository.getById(id);
-        return new ApiResponse("Mana", true, byId);
+        Optional<Category> byId = categoryRepository.findById(id);
+        return new ApiResponse("Mana",true,byId);
     }
 
+    public ApiResponse deleteAll() {
+        categoryRepository.deleteAll();
+        return new ApiResponse("Deleted",true);
+    }
 }
 

@@ -21,12 +21,27 @@ public class RolesService {
 
     public ApiResponse add(Role role) throws ParseException {
     Role newRole = new Role();
-    if (!roleRepository.existsByName(role.getName()))
-        newRole = roleRepository.save(
-                new Role(role.getId(), role.getName(), role.isActive(), role.getPermissions())
-        );
 
-        return new ApiResponse("Saved!", true, newRole);
+    if (!roleRepository.existsByName(role.getName())){
+
+        newRole.setName(role.getName());
+
+        if (role.getPermissions()!=null)
+            newRole.setPermissions(role.getPermissions());
+
+        Role save = roleRepository.save(newRole);
+
+        return new ApiResponse("Saved!", true, save);
+
+    }
+
+    return new ApiResponse("Role already exists", false);
+
+
+//        newRole = roleRepository.save(
+//                new Role(role.getId(), role.getName(), role.isActive(), role.getPermissions())
+//        );
+
     }
 
     public ApiResponse getAll(int page, int size) {
@@ -51,7 +66,7 @@ public class RolesService {
 
             Role role = optional.get();
 
-            if (dto.getName()!=null) {
+            if (dto.getName()!=null && !roleRepository.existsByName(dto.getName())) {
                 role.setName(dto.getName());
             }
 

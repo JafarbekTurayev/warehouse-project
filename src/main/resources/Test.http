@@ -154,3 +154,17 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
       "EDIT_USER"
     ]
 }
+
+###
+POST https://localhost/api/roles/add
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY2NjUyNDYsImV4cCI6MTYzNjc1MTY0Nn0.KfE42vI77qatF-RWlOmXW-_NW1QiuEJFR5ryxzo3iwqmF_JpjoKhsYB4z2T3dNoQ_HStdt00XuMztWjG5svF2w
+
+{
+  "name" : "SUPER_ADMIN"
+}
+
+###
+GET http://localhost/api/roles?page=0&size=1
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY2NjUyNDYsImV4cCI6MTYzNjc1MTY0Nn0.KfE42vI77qatF-RWlOmXW-_NW1QiuEJFR5ryxzo3iwqmF_JpjoKhsYB4z2T3dNoQ_HStdt00XuMztWjG5svF2w

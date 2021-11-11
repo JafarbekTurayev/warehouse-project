@@ -28,4 +28,6 @@ public class Role extends AbsEntity {
         super(id, name, active);
         this.permissions = permissions;
     }
+
+
 }

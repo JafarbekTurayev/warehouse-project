@@ -57,7 +57,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 
 
 ###
-POST http://localhost:8081/api/auth/login
+POST http://localhost:80/api/auth/login
 Content-Type: application/json
 
 {
@@ -137,4 +137,20 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 
 {
 "name": "kg"
+}
+
+###
+POST http://localhost:80/api/roles/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY2MjgxODAsImV4cCI6MTYzNjcxNDU4MH0.7X5RjgEqmpcJ5J9ApUKrwI6xt6vNahVj6toZW33Bg8Pr6GXycvzBYz4Bdl0SEOL3LxNFkknFBG94o6b6i_kvzw
+
+{
+
+  "name": "new Role1",
+  "active": true,
+  "permission":
+    [
+      "ADD_USER",
+      "EDIT_USER"
+    ]
 }

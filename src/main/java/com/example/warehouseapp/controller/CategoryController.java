@@ -12,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/category")
@@ -23,13 +24,13 @@ public class CategoryController {
     @PostMapping
     public HttpEntity<?>addCategory(@RequestBody CategoryDTO categoryDTO){
         ApiResponse response = categoryService.save(categoryDTO);
-        return ResponseEntity.status(response.isSuccess() ? 201:409).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping
     public HttpEntity<?> allCategory(){
-         List<Category> all = categoryService.getAll();
-        return ResponseEntity.ok(all);
+        ApiResponse all = categoryService.getAll();
+        return ResponseEntity.status(HttpStatus.OK).body(all);
     }
 
     @GetMapping("/{id}")
@@ -43,6 +44,11 @@ public class CategoryController {
     public HttpEntity<?> deleteCategory(@PathVariable Integer id ){
             ApiResponse deleted = categoryService.delete(id);
             return  ResponseEntity.ok(deleted);
+    }
+    @DeleteMapping
+    public HttpEntity deleteAll(){
+        ApiResponse response = categoryService.deleteAll();
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{id}")

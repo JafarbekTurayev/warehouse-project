@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -18,4 +19,5 @@ import javax.persistence.OneToMany;
 public class Category extends AbsEntity {
     @ManyToOne
     private Category parentCategory;
+
 }

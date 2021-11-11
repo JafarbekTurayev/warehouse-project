@@ -33,7 +33,7 @@ public class UserService {
             user.setFirstName(userDto.getFirstName());
             user.setLastName(userDto.getLastName());
 
-            user.setCode(Integer.parseInt(UUID.randomUUID().toString()));
+            user.setCode(UUID.randomUUID().toString());
 
             userRepository.save(user);
             return new ApiResponse("Saved!", true);
@@ -46,14 +46,14 @@ public class UserService {
         return allUser;
     }
 
-    public User getOneById(UUID id){
+    public User getOneById(UUID id) {
         Optional<User> byId = userRepository.findById(id);
         return byId.orElse(null);
     }
 
-    public User editUser(UUID id, User user){
+    public User editUser(UUID id, User user) {
         Optional<User> byId = userRepository.findById(id);
-        if (byId.isPresent()){
+        if (byId.isPresent()) {
             User editUser = byId.get();
             editUser.setFirstName(user.getFirstName());
             editUser.setLastName(user.getLastName());
@@ -67,13 +67,13 @@ public class UserService {
         return null;
     }
 
-    public ApiResponse delete(UUID id){
+    public ApiResponse delete(UUID id) {
         Optional<User> byId = userRepository.findById(id);
-        if (byId.isPresent()){
+        if (byId.isPresent()) {
             User user = byId.get();
             user.setActive(false);
             userRepository.save(user);
-            return new ApiResponse("User deactivated",true);
+            return new ApiResponse("User deactivated", true);
         }
         return new ApiResponse("User not found", false);
     }

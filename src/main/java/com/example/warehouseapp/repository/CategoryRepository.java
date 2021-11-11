@@ -7,8 +7,10 @@ import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category,Integer> {
 
-   List<Category> findAllByParentCategoryId(Integer parentCategory_id);
+   List<Category> findAllByParentCategoryId(Integer parentCategory_Id);
+   Category findByName(String name);
    boolean existsByName(String name);
    boolean existsByParentCategoryId(Integer parentCategory_id);
+
 
 }

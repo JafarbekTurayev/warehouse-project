@@ -139,7 +139,6 @@ public class InputService {
 //            Date fromDate = dateFormat.parse(date);
 //            Date toDate = dateFormat.parse(date);
             allByDate = inputRepository.findAllByDateBetween(fromDate, toDate);
-
         } else if (type.equals("weekly")) {
             c.add(Calendar.DATE, 7);
             toDate = c.getTime();

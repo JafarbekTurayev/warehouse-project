@@ -52,4 +52,12 @@ public class OutputController {
         return ResponseEntity.ok("Deleted");
     }
 
+
+    //oylik history
+    //shu paytgacha top 10talik
+    //aborot summasi oylik kunlik yillik chiqimlar degani tushum ombor uchun
+
+
+
+
 }

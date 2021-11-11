@@ -25,4 +25,10 @@ public class WarehouseController {
         ApiResponse response = warehouseService.save(warehouse);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
+
+    //edit
+    //one
+    //all
+    //delete active false
+    //Abdumalik
 }

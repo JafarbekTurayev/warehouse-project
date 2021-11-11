@@ -38,6 +38,11 @@ public class InputController {
     }
 
     //getONE
+    @GetMapping("{id}")
+    public HttpEntity<?> getById(@PathVariable Integer id) {
+        ApiResponse response = inputService.getById(id);
+        return ResponseEntity.ok(response);
+    }
 
 
     //from to

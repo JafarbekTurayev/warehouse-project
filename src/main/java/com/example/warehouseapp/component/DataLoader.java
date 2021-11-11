@@ -43,13 +43,13 @@ public class DataLoader implements CommandLineRunner {
                             Permission.READ_USERS
                     ))));
             Role manager = roleRepository.save(new Role(3, "MANAGER", true,
-                    new HashSet<>(
-                            Arrays.asList(
-                                    Permission.ADD_CATEGORY,
-                                    Permission.ADD_PRODUCT,
-                                    Permission.ADD_WAREHOUSE,
-                                    Permission.ADD_USER
-                            )
+                        new HashSet<>(
+                                Arrays.asList(
+                                        Permission.ADD_CATEGORY,
+                                        Permission.ADD_PRODUCT,
+                                        Permission.ADD_WAREHOUSE,
+                                        Permission.ADD_USER
+                                )
                     )));
 
             userRepository.save(new User("SuperAdmin",

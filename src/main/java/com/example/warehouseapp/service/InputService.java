@@ -157,4 +157,9 @@ public class InputService {
         return new ApiResponse("Mana", true, collect);
 
     }
+
+    public ApiResponse getById(Integer id) {
+        Optional<Input> input= inputRepository.findById(id);
+        return new ApiResponse("Id",true,input.get());
+    }
 }

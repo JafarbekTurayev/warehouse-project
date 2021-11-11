@@ -23,7 +23,7 @@ public class CurrencyController {
 
     @PostMapping
     public HttpEntity<?> addCurrency(@RequestBody CurrencyDto currencyDto) {
-        //bir xil nomli qo'shilmasin
+
         ApiResponse responseCurrency = currencyService.add(currencyDto);
         return ResponseEntity.ok(responseCurrency);
     }
@@ -34,7 +34,7 @@ public class CurrencyController {
         if (!nameCurrency) {
             return ResponseEntity.ok("Not Found");
         }
-        return ResponseEntity.ok("Currency yes!");
+        return ResponseEntity.ok((name));
     }
 
     @GetMapping("/all")
@@ -45,8 +45,13 @@ public class CurrencyController {
 
     @DeleteMapping("{id}")
     public HttpEntity<?> remove(@PathVariable Integer id) {
-        currencyRepository.deleteById(id);
-        return ResponseEntity.ok("Deleted");
+        Optional<Currency> byIdAndActiveTrue = currencyRepository.findByIdAndActiveTrue(id);
+        if (byIdAndActiveTrue.isPresent()) {
+            Currency currency = byIdAndActiveTrue.get();
+            currency.setActive(false);
+            return ResponseEntity.ok("Deleted");
+        }
+        return ResponseEntity.ok("Bunday Id mavjud emas" );
     }
 
     @PutMapping("/edit/{id}")

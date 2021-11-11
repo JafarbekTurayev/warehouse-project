@@ -19,7 +19,7 @@ public class RoleController {
     @Autowired
     RolesService rolesService;
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public HttpEntity<?> add(@RequestBody Role role) throws ParseException {
         ApiResponse response = rolesService.add(role);
         return ResponseEntity.ok(response);

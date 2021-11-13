@@ -166,8 +166,8 @@ public class InputService {
 
     public ApiResponse getAllHistoryType(Integer supplierId, String from, String to) throws ParseException {
 //        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp());
-        Date fromDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(from);
-        Date toDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(to);
+        Date fromDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(from);
+        Date toDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(to);
         List<Input> all = new ArrayList<>();
         if (supplierId == 0 && from.equals(AppConstants.BEGIN_DATE) && to.equals(AppConstants.END_DATE)) {
             all = inputRepository.getAllHistory();

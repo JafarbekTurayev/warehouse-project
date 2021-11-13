@@ -52,5 +52,9 @@ public class ClientController {
     }
 
     //client Id barcha sotib olgan narsalari history
+    @PutMapping("{id}")
+    public HttpEntity<?> historyById(@PathVariable Integer id,@RequestBody ClientDto clientDto){
+            return null;
+    }
     //Axror
 }

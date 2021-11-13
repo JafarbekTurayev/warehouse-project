@@ -28,7 +28,8 @@ public class RoleController {
     }
 
 //edit
-    //getONe
+    //getOne
+
     //getAll
     //Akmal
 }

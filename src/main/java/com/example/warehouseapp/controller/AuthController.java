@@ -2,6 +2,7 @@ package com.example.warehouseapp.controller;
 
 import com.example.warehouseapp.entity.User;
 import com.example.warehouseapp.payload.LoginDTO;
+import com.example.warehouseapp.payload.UserDto;
 import com.example.warehouseapp.repository.UserRepository;
 import com.example.warehouseapp.security.JwtProvider;
 import com.example.warehouseapp.service.AuthService;
@@ -11,10 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -31,7 +29,8 @@ public class AuthController {
     AuthService authService;
     @Autowired
     AuthenticationManager authenticationManager;
-
+    @Autowired
+    AuthController authController;
 
 //    @PostMapping("/register")
 
@@ -48,6 +47,14 @@ public class AuthController {
     }
 
     //editPhone
+    @PutMapping("/api/editPhone")
+    public HttpEntity<?> editPhone(@PathVariable Integer id, @RequestBody UserDto userDto){
+      //ApiResponse editSomething = authService.editSmth(id,userDto);
+       return ResponseEntity.ok(userDto);
+    }
+
+
+
     //editpassword
 
     //Shaxzod

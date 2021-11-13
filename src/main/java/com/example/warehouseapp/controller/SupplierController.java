@@ -51,6 +51,14 @@ public class SupplierController {
         return ResponseEntity.ok("OK");
     }
 
-    //aupplierId boyicha history
+    //supplierId boyicha history
+    @PutMapping("{id}")
+    public HttpEntity<?> supplierById(@PathVariable Integer id,@RequestBody SupplierDTO supplierDTO){
+        if (!supplierRepository.existsById(id)) {
+            return ResponseEntity.ok("Not found Exception!");
+        }
+       //supplierRepository.inputBySupplierId(id);
+        return ResponseEntity.ok("Happy Birthday!");
+    }
 
 }

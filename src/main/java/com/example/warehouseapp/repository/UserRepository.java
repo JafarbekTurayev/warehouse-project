@@ -1,6 +1,7 @@
 package com.example.warehouseapp.repository;
 
 import com.example.warehouseapp.entity.User;
+import com.example.warehouseapp.payload.UserDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -20,5 +21,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     List<User> getAllByWarehouseId(Integer warehouseId);
 
 
+    Optional<UserDto> getById(Integer id);
+
+//    Optional<User> getUserByPhoneNumber(User user);
 
 }

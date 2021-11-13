@@ -41,11 +41,6 @@ public class CategoryService {
     }
 
     public ApiResponse delete(Integer id) {
-        Optional<Category> optionalCategory = categoryRepository.findById(id);
-
-        if (!optionalCategory.isPresent())
-            return new ApiResponse("Category Not Found", false);
-
         categoryRepository.deleteById(id);
         return new ApiResponse("Deleted!", true);
     }
@@ -58,6 +53,7 @@ public class CategoryService {
 
         Category category = optionalCategory.get();
         category.setName(categoryDTO.getName());
+        category.setActive(categoryDTO.isActive());
 
         if(categoryDTO.getParentCategoryId() != null){
             Optional<Category> optional = categoryRepository.findById(categoryDTO.getParentCategoryId());

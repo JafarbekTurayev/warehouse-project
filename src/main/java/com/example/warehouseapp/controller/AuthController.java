@@ -4,6 +4,7 @@ import com.example.warehouseapp.entity.User;
 import com.example.warehouseapp.payload.LoginDTO;
 import com.example.warehouseapp.payload.UserDto;
 import com.example.warehouseapp.repository.UserRepository;
+import com.example.warehouseapp.security.CurrentUser;
 import com.example.warehouseapp.security.JwtProvider;
 import com.example.warehouseapp.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,11 @@ public class AuthController {
 
 //    @PostMapping("/register")
 
+
+    @GetMapping("/me")
+    public HttpEntity<?> getUser(@CurrentUser User user) {
+        return ResponseEntity.ok(user);
+    }
 
     @PostMapping("/login")
     public HttpEntity<?> login(@Valid @RequestBody LoginDTO loginDTO) {

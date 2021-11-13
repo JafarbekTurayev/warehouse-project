@@ -18,33 +18,60 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     public ApiResponse save(CategoryDTO categoryDTO) {
-        Category parentCategory = null;
-       Category category = new Category();
-        if(!categoryRepository.existsByName(categoryDTO.getName())) {
-            category.setName(categoryDTO.getName());
-            if (categoryDTO.getParentCategoryId()!=null){
-                parentCategory = categoryRepository.getById(categoryDTO.getParentCategoryId());
+        boolean existsByName = categoryRepository.existsByName(categoryDTO.getName());
+
+        if (existsByName){
+            return new ApiResponse("This Category already exist!!", false);
         }
-            category.setParentCategory(parentCategory);
-            Category save = categoryRepository.save(category);
-            return new ApiResponse("Saved!", true,save);
-        } else {
-            Category byName = categoryRepository.findByName(categoryDTO.getName());
-            return new ApiResponse("Bunday category mavjud!", false,byName);
+
+        Category category = new Category();
+        category.setName(categoryDTO.getName());
+
+        if(categoryDTO.getParentCategoryId() != null){
+            Optional<Category> optionalCategory = categoryRepository.findById(categoryDTO.getParentCategoryId());
+            if(!optionalCategory.isPresent())
+                return new ApiResponse("Category Not Found!",false);
+            category.setParentCategory(categoryRepository.getById(categoryDTO.getParentCategoryId()));
         }
+
+        categoryRepository.save(category);
+        Category byName = categoryRepository.findByName(category.getName());
+
+        return new ApiResponse("Saved", true,byName);
     }
 
     public ApiResponse delete(Integer id) {
+        Optional<Category> optionalCategory = categoryRepository.findById(id);
+
+        if (!optionalCategory.isPresent())
+            return new ApiResponse("Category Not Found", false);
+
         categoryRepository.deleteById(id);
         return new ApiResponse("Deleted!", true);
     }
 
     public ApiResponse edit(Integer id, CategoryDTO categoryDTO) {
-        Category byIdCategory = categoryRepository.getById(id);
-        byIdCategory.setName(categoryDTO.getName());
-        byIdCategory.setParentCategory(byIdCategory.getParentCategory());
-        categoryRepository.save(byIdCategory);
-        return new ApiResponse("Updated!", true, byIdCategory);
+        Optional<Category> optionalCategory = categoryRepository.findById(id);
+
+        if (!optionalCategory.isPresent())
+            return new ApiResponse("Category Not Found", false);
+
+        Category category = optionalCategory.get();
+        category.setName(categoryDTO.getName());
+
+        if(categoryDTO.getParentCategoryId() != null){
+            Optional<Category> optional = categoryRepository.findById(categoryDTO.getParentCategoryId());
+            if(!optional.isPresent())
+                return new ApiResponse("Category Not Found",false);
+
+            category.setParentCategory(categoryRepository.getById(categoryDTO.getParentCategoryId()));
+        }
+
+        Category save = categoryRepository.save(category);
+
+        return new ApiResponse("Edited!", true,save);
+
+
     }
 
     public ApiResponse getAll() {
@@ -59,7 +86,14 @@ public class CategoryService {
 
     public ApiResponse deleteAll() {
         categoryRepository.deleteAll();
-        return new ApiResponse("Deleted",true);
+        return new ApiResponse("All Category Deleted!",true);
     }
+
+    public ApiResponse getChildCategories(Integer id) {
+        Optional<Category> byId = categoryRepository.findById(id);
+        List<Category> childCategories = categoryRepository.findAllByParentCategoryId(id);
+        return new ApiResponse("Mana",true,childCategories);
+    }
+
 }
 

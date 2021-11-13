@@ -14,7 +14,7 @@ public class CategoryDTO {
 //    private Integer id ;
     private String name;
     private Integer parentCategoryId;
-    private boolean active;
+    private boolean active=true;
 //    private UUID createdBy;
 //    private Timestamp createdAt;
 //    private UUID updatedBy;

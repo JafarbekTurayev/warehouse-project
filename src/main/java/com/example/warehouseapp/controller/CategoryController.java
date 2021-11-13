@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,13 +25,19 @@ public class CategoryController {
     @PostMapping
     public HttpEntity<?>addCategory(@RequestBody CategoryDTO categoryDTO){
         ApiResponse response = categoryService.save(categoryDTO);
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        return ResponseEntity.status(response.isSuccess() ? 200 : 409).body(response);
     }
 
     @GetMapping
     public HttpEntity<?> allCategory(){
         ApiResponse all = categoryService.getAll();
         return ResponseEntity.status(HttpStatus.OK).body(all);
+    }
+
+    @GetMapping("/{id}")
+    public HttpEntity<?> childCategories(@PathVariable Integer id){
+        ApiResponse allChilds = categoryService.getChildCategories(id);
+        return ResponseEntity.status(HttpStatus.OK).body(allChilds);
     }
 
     @GetMapping("/{id}")
@@ -56,7 +63,7 @@ public class CategoryController {
 
         ApiResponse edited = categoryService.edit(id,categoryDTO);
 
-        return ResponseEntity.status(edited!=null?202:409).body(edited);
+        return ResponseEntity.status(edited.isSuccess() ? 200 : 409).body(edited);
     }
 
 

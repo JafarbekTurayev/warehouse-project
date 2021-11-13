@@ -1,5 +1,6 @@
 package com.example.warehouseapp.config;
 
+import com.example.warehouseapp.security.JwtAuthenticationEntryPoint;
 import com.example.warehouseapp.security.JwtFilter;
 import com.example.warehouseapp.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     AuthService myAuthService;
 
+
+    @Autowired
+    JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(myAuthService);
@@ -39,13 +44,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors()
                 .and()
                 .csrf().disable()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+//                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/**","/swagger-ui.html").permitAll()
-                .antMatchers("/api/auth/login").permitAll()
-                .antMatchers("/api/category/**").permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/",
+                        "/favicon.ico",
+                        "/**/*.png",
+                        "/**/*.gif",
+                        "/**/*.svg",
+                        "/**/*.jpg",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js",
+                        "/swagger-ui.html",
+                        "/swagger-resources/**",
+                        "/v2/**",
+                        "/csrf",
+                        "/webjars/**")
+                .permitAll()
+                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/**")
+                .authenticated();
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 

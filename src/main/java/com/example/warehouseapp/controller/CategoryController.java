@@ -40,11 +40,11 @@ public class CategoryController {
         return ResponseEntity.status(HttpStatus.OK).body(allChilds);
     }
 
-    @GetMapping("/{id}")
-    public HttpEntity<?> getOneCategory(@PathVariable Integer id){
-        ApiResponse oneById = categoryService.getOneById(id);
-        return ResponseEntity.ok(oneById);
-    }
+//    @GetMapping("/{id}")
+//    public HttpEntity<?> getOneCategory(@PathVariable Integer id){
+//        ApiResponse oneById = categoryService.getOneById(id);
+//        return ResponseEntity.ok(oneById);
+//    }
 
 
     @DeleteMapping("/{id}")

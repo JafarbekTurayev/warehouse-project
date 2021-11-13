@@ -13,7 +13,7 @@ Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
 
 ###
-GET http://localhost:8081/api/category?id=2&one=true
+GET http://localhost:8081/api/category/2
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
 
@@ -29,9 +29,10 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 }
 
 ###
-DELETE http://localhost:8081/api/category/24
+DELETE http://localhost:8081/api/category/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY0NjE2ODYsImV4cCI6MTYzNzMyNTY4Nn0.YnPmpSE9UFw7WUDa7bts0O29M1B7Q4Uz1uH_0Et16sZ5Wed-qio8tewh-YkjI96FqGYjOf6buCdGi6Ayz1HikA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
+
 
 ###
 

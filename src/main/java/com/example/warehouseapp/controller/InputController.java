@@ -5,12 +5,14 @@ import com.example.warehouseapp.payload.ApiResponse;
 import com.example.warehouseapp.payload.responce.InputDTO;
 import com.example.warehouseapp.repository.InputRepository;
 import com.example.warehouseapp.service.InputService;
+import com.example.warehouseapp.utils.AppConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.awt.print.Pageable;
+import java.sql.Timestamp;
 import java.text.ParseException;
 
 @RestController
@@ -60,6 +62,14 @@ public class InputController {
     }
 
     //history hamma taminotchi uchun
+    @GetMapping("/history") //daily monthly weekly
+    public HttpEntity<?> getAllHistoryBySupplier(
+            @RequestParam(defaultValue = "0") Integer supplierId,
+            @RequestParam(defaultValue = AppConstants.BEGIN_DATE) String from,
+            @RequestParam(defaultValue = AppConstants.END_DATE) String to) throws ParseException {
+        ApiResponse response = inputService.getAllHistoryType(supplierId, from, to);
+        return ResponseEntity.ok(response);
+    }
 
 
 }

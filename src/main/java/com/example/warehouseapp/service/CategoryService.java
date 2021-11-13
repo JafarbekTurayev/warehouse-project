@@ -7,6 +7,7 @@ import com.example.warehouseapp.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,46 +18,81 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     public ApiResponse save(CategoryDTO categoryDTO) {
-        Optional<Category> categoryParentId = null;
-        if (categoryDTO.getParentCategoryId() != null) {
-            categoryParentId = categoryRepository.findById(categoryDTO.getParentCategoryId());
+        boolean existsByName = categoryRepository.existsByName(categoryDTO.getName());
+
+        if (existsByName){
+            return new ApiResponse("This Category already exist!!", false);
         }
-        if (!categoryRepository.existsByName(categoryDTO.getName())) {
-            Category category = new Category();
-            category.setName(categoryDTO.getName());
-            if (categoryParentId.isPresent()) {
-                category.setParentCategory(categoryParentId.get());
-            } else {
-                category.setParentCategory(null);
-            }
-            categoryRepository.save(category);
-            return new ApiResponse("Saved!", true);
-        } else {
-            return new ApiResponse("Bunday category mavjud!", false);
+
+        Category category = new Category();
+        category.setName(categoryDTO.getName());
+
+        if(categoryDTO.getParentCategoryId() != null){
+            Optional<Category> optionalCategory = categoryRepository.findById(categoryDTO.getParentCategoryId());
+            if(!optionalCategory.isPresent())
+                return new ApiResponse("Category Not Found!",false);
+            category.setParentCategory(categoryRepository.getById(categoryDTO.getParentCategoryId()));
         }
+
+        categoryRepository.save(category);
+        Category byName = categoryRepository.findByName(category.getName());
+
+        return new ApiResponse("Saved", true,byName);
     }
 
     public ApiResponse delete(Integer id) {
+        Optional<Category> optionalCategory = categoryRepository.findById(id);
+
+        if (!optionalCategory.isPresent())
+            return new ApiResponse("Category Not Found", false);
+
         categoryRepository.deleteById(id);
         return new ApiResponse("Deleted!", true);
     }
 
     public ApiResponse edit(Integer id, CategoryDTO categoryDTO) {
-        Category byIdCategory = categoryRepository.getById(id);
-        byIdCategory.setName(categoryDTO.getName());
-        byIdCategory.setParentCategory(byIdCategory.getParentCategory());
-        categoryRepository.save(byIdCategory);
-        return new ApiResponse("Updated!", true, byIdCategory);
+        Optional<Category> optionalCategory = categoryRepository.findById(id);
+
+        if (!optionalCategory.isPresent())
+            return new ApiResponse("Category Not Found", false);
+
+        Category category = optionalCategory.get();
+        category.setName(categoryDTO.getName());
+
+        if(categoryDTO.getParentCategoryId() != null){
+            Optional<Category> optional = categoryRepository.findById(categoryDTO.getParentCategoryId());
+            if(!optional.isPresent())
+                return new ApiResponse("Category Not Found",false);
+
+            category.setParentCategory(categoryRepository.getById(categoryDTO.getParentCategoryId()));
+        }
+
+        Category save = categoryRepository.save(category);
+
+        return new ApiResponse("Edited!", true,save);
+
+
     }
 
-    public List<Category> getAll() {
-        List<Category> allCategory = categoryRepository.findAll();
-        return (List<Category>) new ApiResponse("Mana", true, allCategory);
+    public ApiResponse getAll() {
+        List<Category> all = categoryRepository.findAll();
+        return  new ApiResponse("Mana", true,all);
     }
 
     public ApiResponse getOneById(Integer id) {
-        Category byId = categoryRepository.getById(id);
-        return new ApiResponse("Mana", true, byId);
+        Optional<Category> byId = categoryRepository.findById(id);
+        return new ApiResponse("Mana",true,byId);
+    }
+
+    public ApiResponse deleteAll() {
+        categoryRepository.deleteAll();
+        return new ApiResponse("All Category Deleted!",true);
+    }
+
+    public ApiResponse getChildCategories(Integer id) {
+        Optional<Category> byId = categoryRepository.findById(id);
+        List<Category> childCategories = categoryRepository.findAllByParentCategoryId(id);
+        return new ApiResponse("Mana",true,childCategories);
     }
 
 }

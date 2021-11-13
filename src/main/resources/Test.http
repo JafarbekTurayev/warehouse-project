@@ -1,29 +1,38 @@
 POST http://localhost:8081/api/category
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY0NjE2ODYsImV4cCI6MTYzNzMyNTY4Nn0.YnPmpSE9UFw7WUDa7bts0O29M1B7Q4Uz1uH_0Et16sZ5Wed-qio8tewh-YkjI96FqGYjOf6buCdGi6Ayz1HikA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY3ODMxMzYsImV4cCI6MTYzNjg2OTUzNn0.MH7TsrlGgEWeoNDIz7mJDVIa_hFPu1reyq0KGQow7L43IqEeSQZMk1eWTG10WfThZezESnyZRLRFYl_oLar-hw
 
 {
-  "name": "Oziq-ovqat"
+  "name": "Kir Yuvish Mashinasi",
+  "parentCategoryId": 2
 }
 
 ###
 GET http://localhost:8081/api/category
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY0NjE2ODYsImV4cCI6MTYzNzMyNTY4Nn0.YnPmpSE9UFw7WUDa7bts0O29M1B7Q4Uz1uH_0Et16sZ5Wed-qio8tewh-YkjI96FqGYjOf6buCdGi6Ayz1HikA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
+
+###
+GET http://localhost:8081/api/category/2
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
+
+
 
 ###
 PUT http://localhost:8081/api/category/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY0NjE2ODYsImV4cCI6MTYzNzMyNTY4Nn0.YnPmpSE9UFw7WUDa7bts0O29M1B7Q4Uz1uH_0Et16sZ5Wed-qio8tewh-YkjI96FqGYjOf6buCdGi6Ayz1HikA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
 
 {
-  "name": "MebelUpdated"
+  "name": "Televizor"
 }
 
 ###
-DELETE http://localhost:8081/api/category/3
+DELETE http://localhost:8081/api/category/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY0NjE2ODYsImV4cCI6MTYzNzMyNTY4Nn0.YnPmpSE9UFw7WUDa7bts0O29M1B7Q4Uz1uH_0Et16sZ5Wed-qio8tewh-YkjI96FqGYjOf6buCdGi6Ayz1HikA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
+
 
 ###
 
@@ -137,4 +146,20 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 
 {
 "name": "kg"
+}
+
+###
+POST http://localhost:80/api/roles/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY2MjgxODAsImV4cCI6MTYzNjcxNDU4MH0.7X5RjgEqmpcJ5J9ApUKrwI6xt6vNahVj6toZW33Bg8Pr6GXycvzBYz4Bdl0SEOL3LxNFkknFBG94o6b6i_kvzw
+
+{
+
+  "name": "new Role1",
+  "active": true,
+  "permission":
+    [
+      "ADD_USER",
+      "EDIT_USER"
+    ]
 }

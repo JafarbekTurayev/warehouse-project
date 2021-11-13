@@ -28,41 +28,34 @@ public class CategoryController {
         return ResponseEntity.status(response.isSuccess() ? 200 : 409).body(response);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public HttpEntity<?> allCategory(){
         ApiResponse all = categoryService.getAll();
         return ResponseEntity.status(HttpStatus.OK).body(all);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/allByParent/{id}")
     public HttpEntity<?> childCategories(@PathVariable Integer id){
         ApiResponse allChilds = categoryService.getChildCategories(id);
         return ResponseEntity.status(HttpStatus.OK).body(allChilds);
     }
 
-//    @GetMapping("/{id}")
-//    public HttpEntity<?> getOneCategory(@PathVariable Integer id){
-//        ApiResponse oneById = categoryService.getOneById(id);
-//        return ResponseEntity.ok(oneById);
-//    }
-
-
-    @DeleteMapping("/{id}")
-    public HttpEntity<?> deleteCategory(@PathVariable Integer id ){
-            ApiResponse deleted = categoryService.delete(id);
-            return  ResponseEntity.ok(deleted);
+    @GetMapping("/one/{id}")
+    public HttpEntity<?> getOneCategory(@PathVariable Integer id){
+        ApiResponse oneById = categoryService.getOneById(id);
+        return ResponseEntity.ok(oneById);
     }
-    @DeleteMapping
-    public HttpEntity deleteAll(){
-        ApiResponse response = categoryService.deleteAll();
-        return ResponseEntity.ok(response);
+
+
+    @DeleteMapping(value = "/{id}")
+    public HttpEntity<?> deleteCategory(@PathVariable Integer id ){
+        ApiResponse delete = categoryService.delete(id);
+        return  ResponseEntity.status(delete.isSuccess()?200 : 409).body(delete);
     }
 
     @PutMapping("/{id}")
     public HttpEntity<?> editCategory(@PathVariable Integer id, @RequestBody CategoryDTO categoryDTO){
-
         ApiResponse edited = categoryService.edit(id,categoryDTO);
-
         return ResponseEntity.status(edited.isSuccess() ? 200 : 409).body(edited);
     }
 

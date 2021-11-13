@@ -1,3 +1,9 @@
+GET http://localhost:8081/api/category/one/4
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MTEzODMsImV4cCI6MTYzNjg5Nzc4M30.uaicL0pH631dD3wzXR_s4zqqwiLqNuUVcjD3rFkZRo8ZrUdHQ0Py1NZGi0KHHgpNRbZS_tX6m9OPB39gzunMoA
+
+
+###
 POST http://localhost:8081/api/category
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY3ODMxMzYsImV4cCI6MTYzNjg2OTUzNn0.MH7TsrlGgEWeoNDIz7mJDVIa_hFPu1reyq0KGQow7L43IqEeSQZMk1eWTG10WfThZezESnyZRLRFYl_oLar-hw
@@ -8,12 +14,12 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 }
 
 ###
-GET http://localhost:8081/api/category
+GET http://localhost:8081/api/category/all
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
 
 ###
-GET http://localhost:8081/api/category/2
+GET http://localhost:8081/api/category/allByParent/2
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
 
@@ -25,11 +31,12 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
 
 {
-  "name": "TelevizorUpdated"
+  "name": "Televizor",
+  "active": true
 }
 
 ###
-DELETE http://localhost:8081/api/category/5
+DELETE http://localhost:8081/api/category/7
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MTEzODMsImV4cCI6MTYzNjg5Nzc4M30.uaicL0pH631dD3wzXR_s4zqqwiLqNuUVcjD3rFkZRo8ZrUdHQ0Py1NZGi0KHHgpNRbZS_tX6m9OPB39gzunMoA
 

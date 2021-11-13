@@ -22,7 +22,6 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
 
-    @PreAuthorize(value = "hasAuthority('ADD_CATEGORY')")
     @PostMapping
     public HttpEntity<?>addCategory(@RequestBody CategoryDTO categoryDTO){
         ApiResponse response = categoryService.save(categoryDTO);

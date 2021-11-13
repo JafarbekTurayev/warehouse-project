@@ -45,7 +45,6 @@ public class CategoryService {
 
         if (!optionalCategory.isPresent())
             return new ApiResponse("Category Not Found", false);
-
         categoryRepository.deleteById(id);
         return new ApiResponse("Deleted!", true);
     }

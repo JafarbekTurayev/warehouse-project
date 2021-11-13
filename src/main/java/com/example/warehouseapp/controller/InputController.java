@@ -59,4 +59,7 @@ public class InputController {
         return ResponseEntity.ok(response);
     }
 
+    //history hamma taminotchi uchun
+
+
 }

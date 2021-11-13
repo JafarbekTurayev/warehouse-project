@@ -7,6 +7,7 @@ import java.lang.annotation.*;
 @Target({ElementType.PARAMETER, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+//return spring useri kim bo'lsa qaytarish
 @AuthenticationPrincipal
 public @interface CurrentUser {
 }

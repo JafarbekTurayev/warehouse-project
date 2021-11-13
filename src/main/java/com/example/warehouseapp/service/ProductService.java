@@ -34,11 +34,11 @@ public class ProductService {
             Optional<Measurement> optionalMeasurement = measurementRepository.findById(productDTO.getMeasureId());
 
             Optional<Category> optionalCategory = categoryRepository.findById(productDTO.getCatId());
-//            Category category = categoryRepository.findById(productDTO.getCatId())
-//                    .orElseThrow(() -> new ResourceNotFoundException("category", "id", productDTO.getCatId()));
+            Category category = categoryRepository.findById(productDTO.getCatId())
+                    .orElseThrow(() -> new ResourceNotFoundException("category", "id", productDTO.getCatId()));
 
-//            product.setCategory(category);
-            product.setCategory(optionalCategory.get());
+            product.setCategory(category);
+//            product.setCategory(optionalCategory.get());
             product.setMeasurement(optionalMeasurement.get());
 
             product.setName(productDTO.getName());

@@ -3,6 +3,7 @@ package com.example.warehouseapp.controller;
 import com.example.warehouseapp.entity.User;
 import com.example.warehouseapp.payload.LoginDTO;
 import com.example.warehouseapp.repository.UserRepository;
+import com.example.warehouseapp.security.CurrentUser;
 import com.example.warehouseapp.security.JwtProvider;
 import com.example.warehouseapp.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -35,6 +33,11 @@ public class AuthController {
 
 //    @PostMapping("/register")
 
+
+    @GetMapping("/me")
+    public HttpEntity<?> getUser(@CurrentUser User user) {
+        return ResponseEntity.ok(user);
+    }
 
     @PostMapping("/login")
     public HttpEntity<?> login(@Valid @RequestBody LoginDTO loginDTO) {

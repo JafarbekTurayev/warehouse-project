@@ -8,6 +8,7 @@ import com.example.warehouseapp.payload.ResInputProductDTO;
 import com.example.warehouseapp.payload.responce.InputDTO;
 import com.example.warehouseapp.payload.responce.InputProductDTO;
 import com.example.warehouseapp.repository.*;
+import com.example.warehouseapp.utils.AppConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -158,7 +160,24 @@ public class InputService {
     }
 
     public ApiResponse getById(Integer id) {
-        Optional<Input> input= inputRepository.findById(id);
-        return new ApiResponse("Id",true,input.get());
+        Optional<Input> input = inputRepository.findById(id);
+        return new ApiResponse("Id", true, input.get());
+    }
+
+    public ApiResponse getAllHistoryType(Integer supplierId, String from, String to) throws ParseException {
+//        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp());
+        Date fromDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(from);
+        Date toDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(to);
+        List<Input> all = new ArrayList<>();
+        if (supplierId == 0 && from.equals(AppConstants.BEGIN_DATE) && to.equals(AppConstants.END_DATE)) {
+            all = inputRepository.getAllHistory();
+        } else if (supplierId != 0 && from.equals(AppConstants.BEGIN_DATE) && to.equals(AppConstants.END_DATE)) {
+            all = inputRepository.findAllBySupplier_Id(supplierId);
+        } else if (supplierId == 0 && !from.equals(AppConstants.BEGIN_DATE) && !to.equals(AppConstants.END_DATE)) {
+            all = inputRepository.findAllByDateBetween(fromDate, toDate);
+        } else {
+            all = inputRepository.findAllBySupplier_IdAndDateBetween(supplierId, fromDate, toDate);
+        }
+        return new ApiResponse("Mana", true, all);
     }
 }

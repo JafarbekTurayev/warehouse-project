@@ -28,30 +28,37 @@ public class ProductController {
     }
 
     @GetMapping("/allProduct")
-    public HttpEntity<?> getAll(@RequestParam (defaultValue = "0")int page, @RequestParam(defaultValue = "15") int size){
-        List<Product> products = productService.getAllProduct(page,size);
+    public HttpEntity<?> getAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "15") int size) {
+        List<Product> products = productService.getAllProduct(page, size);
         return ResponseEntity.ok(products);
     }
 
     @GetMapping("/{id}")
-    public HttpEntity<?> getOne(@PathVariable Integer id){
+    public HttpEntity<?> getOne(@PathVariable Integer id) {
         Product product = productService.getOneById(id);
-        return ResponseEntity.status(product!=null?201:409).body(product);
+        return ResponseEntity.status(product != null ? 201 : 409).body(product);
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> editProduct(@PathVariable Integer id, @RequestBody ProductDTO productDTO){
-        Product edited = productService.editProduct(id,productDTO);
-        return ResponseEntity.status(edited!=null?202:409).body(edited);
+    public HttpEntity<?> editProduct(@PathVariable Integer id, @RequestBody ProductDTO productDTO) {
+        Product edited = productService.editProduct(id, productDTO);
+        return ResponseEntity.status(edited != null ? 202 : 409).body(edited);
     }
+
     @DeleteMapping("/{id}")
-    public HttpEntity<?> deleteProduct(@PathVariable Integer id){
+    public HttpEntity<?> deleteProduct(@PathVariable Integer id) {
         boolean delete = productService.deleted(id);
         if (delete)
-        return ResponseEntity.noContent().build();
+            return ResponseEntity.noContent().build();
         return ResponseEntity.notFound().build();
     }
 
 
+    //top 10 talik mahsulot input un
+    @GetMapping("/top")
+    public HttpEntity<?> topInputProducts(@RequestParam String top) {
+        ApiResponse response = productService.top(top);
+        return ResponseEntity.ok(response);
+    }
 
 }

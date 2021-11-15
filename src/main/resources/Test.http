@@ -1,3 +1,9 @@
+GET http://localhost:8081/api/category/one/4
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MTEzODMsImV4cCI6MTYzNjg5Nzc4M30.uaicL0pH631dD3wzXR_s4zqqwiLqNuUVcjD3rFkZRo8ZrUdHQ0Py1NZGi0KHHgpNRbZS_tX6m9OPB39gzunMoA
+
+
+###
 POST http://localhost:8081/api/category
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY3ODMxMzYsImV4cCI6MTYzNjg2OTUzNn0.MH7TsrlGgEWeoNDIz7mJDVIa_hFPu1reyq0KGQow7L43IqEeSQZMk1eWTG10WfThZezESnyZRLRFYl_oLar-hw
@@ -8,12 +14,12 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 }
 
 ###
-GET http://localhost:8081/api/category
+GET http://localhost:8081/api/category/all
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
 
 ###
-GET http://localhost:8081/api/category/2
+GET http://localhost:8081/api/category/allByParent/2
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
 
@@ -25,14 +31,14 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
 
 {
-  "name": "Televizor"
+  "name": "Televizor",
+  "active": true
 }
 
 ###
-DELETE http://localhost:8081/api/category/4
+DELETE http://localhost:8081/api/category/7
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
-
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MTEzODMsImV4cCI6MTYzNjg5Nzc4M30.uaicL0pH631dD3wzXR_s4zqqwiLqNuUVcjD3rFkZRo8ZrUdHQ0Py1NZGi0KHHgpNRbZS_tX6m9OPB39gzunMoA
 
 ###
 
@@ -100,12 +106,12 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 ###
 POST http://localhost:80/api/input
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYyMTAxODMsImV4cCI6MTYzNjI5NjU4M30.blPmbto3VdGmg5C94Yovviir36haDMNp3otOGmcNnChYXE6FTlZimmLAkRoPp8sRUWCKRSUaTFGlSYEkVN5o1g
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY3ODYwNzYsImV4cCI6MTYzNjg3MjQ3Nn0.t_oH_qvT6Ve7nUAMVM5d-uQJm-54Rl_1YPS50McrwiBezlgH1rDTfw2ibiLjX_c2wCEdDzi4WAsi9kUdEHvQHQ
 
 {
   "warehouseId": 1,
   "currencyId": 1,
-  "factureName": "N11",
+  "factureName": "N4",
   "supplierId": 1,
   "inputProductDTOS": [
     {
@@ -115,10 +121,10 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
       "expireDate": "19-11-2021"
     },
     {
-      "productId": 4,
+      "productId": 2,
       "amount": 10,
       "price": 50000,
-      "expireDate": "17-10-2021"
+      "expireDate": "17-11-2021"
     }
   ]
 }
@@ -145,7 +151,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
 
 {
-"name": "kg"
+  "name": "kg"
 }
 
 ###
@@ -154,12 +160,22 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY2MjgxODAsImV4cCI6MTYzNjcxNDU4MH0.7X5RjgEqmpcJ5J9ApUKrwI6xt6vNahVj6toZW33Bg8Pr6GXycvzBYz4Bdl0SEOL3LxNFkknFBG94o6b6i_kvzw
 
 {
-
   "name": "new Role1",
   "active": true,
-  "permission":
-    [
-      "ADD_USER",
-      "EDIT_USER"
-    ]
+  "permission": [
+    "ADD_USER",
+    "EDIT_USER"
+  ]
 }
+
+
+
+###
+GET http://localhost:80/api/product/top?top=desc
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY3ODYwNzYsImV4cCI6MTYzNjg3MjQ3Nn0.t_oH_qvT6Ve7nUAMVM5d-uQJm-54Rl_1YPS50McrwiBezlgH1rDTfw2ibiLjX_c2wCEdDzi4WAsi9kUdEHvQHQ
+
+###
+GET http://localhost/api/input/history?supplierId=1&from='2021-01-01 00:00:00'&to='2021-11-11 00:00:00'
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY3ODYwNzYsImV4cCI6MTYzNjg3MjQ3Nn0.t_oH_qvT6Ve7nUAMVM5d-uQJm-54Rl_1YPS50McrwiBezlgH1rDTfw2ibiLjX_c2wCEdDzi4WAsi9kUdEHvQHQ

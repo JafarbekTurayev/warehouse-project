@@ -85,4 +85,13 @@ public class ProductService {
             return false;
         }
     }
+
+    public ApiResponse top(String top) {
+//        if (top.equals("desc")) {
+            return new ApiResponse("Mana", true, productRepository.getTopInputProducts(top));
+//        } else {
+//            //umuman sotilmagan
+//            return new ApiResponse("Mana", true, productRepository.getLessInputProducts(String top));
+//        }
+    }
 }

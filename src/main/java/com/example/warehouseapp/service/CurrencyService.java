@@ -15,6 +15,10 @@ public class CurrencyService {
     CurrencyRepository currencyRepository;
 
     public ApiResponse add(CurrencyDto currencyDto) {
+        if (currencyRepository.existsByName(currencyDto.getName())){
+            return new ApiResponse("Bunday Currency mavjud!",false);
+        }
+
         Currency currency = new Currency();
         currency.setName(currencyDto.getName());
         currency.setActive(currencyDto.isActive());

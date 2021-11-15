@@ -10,11 +10,12 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/output")
+@RequestMapping("/api/output")
 public class OutputController {
     @Autowired
     OutputService outputService;
@@ -60,5 +61,25 @@ public class OutputController {
     //shu paytgacha top 10talik
     //aborot summasi oylik kunlik yillik chiqimlar degani tushum ombor uchun
 
+    //getAll
+    @GetMapping("/allRes")
+    public HttpEntity<?> getAll2(@RequestParam int page,@RequestParam int size){
+        ApiResponse response = outputService.getAll(page,size);
+        return ResponseEntity.ok(response);
+    }
+
+    //from to
+    @GetMapping ("/from")
+    public HttpEntity<?> getAllFromTo(@RequestParam String from,@RequestParam String to) throws ParseException {
+        ApiResponse response = outputService.getAllFromTo(from,to);
+        return ResponseEntity.ok(response);
+    }
+
+    //kun hafta oy
+    @GetMapping ("/searchType")
+    public HttpEntity<?> getAllSearchType(@RequestParam String type, @RequestParam String date ) throws ParseException {
+        ApiResponse response = outputService.getAllSearchType(type,date);
+        return ResponseEntity.ok(response);
+    }
 
 }

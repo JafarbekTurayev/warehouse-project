@@ -16,8 +16,8 @@ public class BotUser extends AbsEntity {
     private String chatId;
     private String state;
     private String lang;
-    private float lat;
-    private float lon;
+    private Double lat;
+    private Double lon;
     private String address;
 
 }

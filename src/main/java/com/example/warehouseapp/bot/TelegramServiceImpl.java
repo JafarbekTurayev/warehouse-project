@@ -185,7 +185,7 @@ public class TelegramServiceImpl implements TelegramService {
             row.add(keyboardButton);
         }
         KeyboardButton back = new KeyboardButton();
-        back = update.getMessage().getText().equals(Constant.MENU_TEXT_UZ) ? back.setText(Constant.BACK_UZ) : back.setText(Constant.BACK_RU);
+//        back = update.getMessage().getText().equals(Constant.MENU_TEXT_UZ) ? back.setText(Constant.BACK_UZ) : back.setText(Constant.BACK_RU);
         row1.add(back);
         keyboardRowList.add(row);
         keyboardRowList.add(row1);
@@ -207,6 +207,11 @@ public class TelegramServiceImpl implements TelegramService {
 
     @Override
     public SendMessage help(Update update) {
+        return null;
+    }
+
+    @Override
+    public SendMessage menuProducts(Update update) {
         return null;
     }
 }

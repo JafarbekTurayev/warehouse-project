@@ -62,11 +62,11 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 ###
 POST http://localhost/api/product
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY5OTU5ODYsImV4cCI6MTYzNzA4MjM4Nn0.6L3djZbiJ7vT_lWRFDpoC-TA2bKZvkRNFDsDsmng0HkpVnA4rj1Jpj6oZqWbcRPCjrN0c-u-Dtt4bfUE25q72Q
 
 {
   "name": "Huawei",
-  "catId": 1,
+  "catId": 2,
   "measureId": 1
 }
 
@@ -93,13 +93,13 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 
 ###
 ###get one byId
-GET http://localhost:8080/api/product/3
+GET http://localhost/api/product/3
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU5MjE2MDcsImV4cCI6MTYzNjI4MTYwN30.6DLR-Cu0sjDryiulR8yp1_I0kpsEVsdew7s27eS4hUzaKtXBlzoTIgbGXTZpeMdi4KKR1-Het5J7kbmXf5OYaw
 
 ###
 ###get all
-GET http://localhost:8080/api/product/allProduct
+GET http://localhost/api/product/allProduct
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU5MjE2MDcsImV4cCI6MTYzNjI4MTYwN30.6DLR-Cu0sjDryiulR8yp1_I0kpsEVsdew7s27eS4hUzaKtXBlzoTIgbGXTZpeMdi4KKR1-Het5J7kbmXf5OYaw
 

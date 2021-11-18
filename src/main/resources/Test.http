@@ -106,7 +106,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
 ###
 POST http://localhost:80/api/input
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY3ODYwNzYsImV4cCI6MTYzNjg3MjQ3Nn0.t_oH_qvT6Ve7nUAMVM5d-uQJm-54Rl_1YPS50McrwiBezlgH1rDTfw2ibiLjX_c2wCEdDzi4WAsi9kUdEHvQHQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzcyNDc2NjEsImV4cCI6MTYzNzMzNDA2MX0.AsdSAxYn60_NERndiYCzSyPY1HtTSMT2UkkwWgxQW9RYnnnO5o_fkcKYBeOhP0gb6GMCGosXKis7EAcR_Mnqjg
 
 {
   "warehouseId": 1,
@@ -115,16 +115,10 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2M
   "supplierId": 1,
   "inputProductDTOS": [
     {
-      "productId": 3,
+      "productId": 1,
       "amount": 200,
       "price": 3000,
       "expireDate": "19-11-2021"
-    },
-    {
-      "productId": 2,
-      "amount": 10,
-      "price": 50000,
-      "expireDate": "17-11-2021"
     }
   ]
 }

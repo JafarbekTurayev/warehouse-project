@@ -9,4 +9,5 @@ public interface BotState {
     String SETTINGS = "settings";
     String HELP = "help";
     String MENU_PRODUCTS = "menu_products";
+    String ONE_PRODUCT = "one_product";
 }

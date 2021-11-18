@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     boolean existsByCode(String code);
@@ -25,5 +26,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 //            "group by p.name order by summa limit 10", nativeQuery = true)
 //    List<Object> getLessInputProducts();
 
-
+    Optional<Product> findByName(String name);
 }

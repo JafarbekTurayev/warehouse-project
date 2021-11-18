@@ -30,10 +30,10 @@ public class WarehouseBot extends TelegramLongPollingBot {
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
-        String chatId = String.valueOf(update.getMessage().getChatId());
-        Message message = update.getMessage();
-        String text = update.getMessage().getText();
         if (update.hasMessage()) {
+            Message message = update.getMessage();
+            String text = update.getMessage().getText();
+            String chatId = String.valueOf(update.getMessage().getChatId());
             if (message.hasText()) {
                 if (text.equals("/start")) {
                     BotUser botUser = new BotUser();
@@ -48,6 +48,8 @@ public class WarehouseBot extends TelegramLongPollingBot {
                         String state = botUser.getState();
                         switch (state) {
                             case BotState.CHOOSE_LANG:
+                                if (text.equals(Constant.BUTTON_UZ)) botUser.setLang(Constant.LANG_UZ);
+                                else botUser.setLang(Constant.LANG_RU);
                                 botUser.setState(BotState.SHARE_CONTACT);
                                 botUserRepository.save(botUser);
                                 execute(telegramService.shareContact(update));
@@ -74,7 +76,13 @@ public class WarehouseBot extends TelegramLongPollingBot {
                                 break;
                             case BotState.WAREHOUSE_LIST:
                                 botUser.setState(BotState.MENU_PRODUCTS);
+                                botUserRepository.save(botUser);
                                 execute(telegramService.menuProducts(update));
+                                break;
+                            case BotState.MENU_PRODUCTS:
+                                botUser.setState(BotState.ONE_PRODUCT);
+                                botUserRepository.save(botUser);
+                                execute(telegramService.oneProduct(update));
                                 break;
                         }
                     }
@@ -86,7 +94,6 @@ public class WarehouseBot extends TelegramLongPollingBot {
                     String state = botUser.getState();
                     switch (state) {
                         case BotState.SHARE_CONTACT:
-                            botUser.setLang(text);
                             botUser.setState(BotState.SHARE_LOCATION);
                             botUserRepository.save(botUser);
                             execute(telegramService.shareLocation(update));
@@ -110,9 +117,14 @@ public class WarehouseBot extends TelegramLongPollingBot {
                     }
                 }
             }
+        } else if (update.hasCallbackQuery()) {
+
+            if (update.getCallbackQuery().getData().equals("product")) {
+
+                String chatId = String.valueOf(update.getCallbackQuery().getMessage().getChatId());
+                System.out.println("Keldi!" + chatId);
+            }
         }
-
-
     }
 
     @Override

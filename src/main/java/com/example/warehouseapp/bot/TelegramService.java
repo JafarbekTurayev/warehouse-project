@@ -5,6 +5,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import java.io.IOException;
+
 public interface TelegramService {
 
     SendMessage welcome(Update update);
@@ -23,4 +25,6 @@ public interface TelegramService {
     SendMessage help(Update update);
 
     SendMessage menuProducts(Update update);
+
+    SendPhoto oneProduct(Update update) throws IOException;
 }

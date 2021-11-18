@@ -28,4 +28,5 @@ public class Product extends AbsEntity {
     private Measurement measurement;
 
 
+
 }

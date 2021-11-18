@@ -3,6 +3,8 @@ package com.example.warehouseapp.bot;
 public interface Constant {
     String WELCOME_TEXT = "Xush kelibsiz Warehouse! \n Tilni tanlang";
 
+    String LANG_UZ = "uz";
+    String LANG_RU = "ru";
     String BUTTON_UZ = "Uzbek";
     String BUTTON_RU = "Russian";
 
@@ -13,6 +15,8 @@ public interface Constant {
     String SHARE_LOCATION_RU = "Location ruscha";
     String WAREHOUSE_TEXT_UZ = "Omborlar ro'yxati";
     String WAREHOUSE_TEXT_RU = "ruschasi ro'yxati";
+    String PRODUCT_TEXT_UZ = "mahsulotlar ro'yxati";
+    String PRODUCT_TEXT_RU = "mahsulotRU ro'yxati";
     String MENU_TEXT_UZ = "MENU";
     String MENU_TEXT_RU = "MENYU";
 

@@ -25,4 +25,5 @@ public interface InputRepository extends JpaRepository<Input, Integer> {
 
 //    List<Input> findAllByDateBetween(Timestamp from, Timestamp to);
 
+    List<Input> findAllByWarehouse_Name(String id);
 }

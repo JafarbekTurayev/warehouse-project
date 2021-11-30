@@ -19,9 +19,9 @@ import java.util.Set;
 @Entity
 public class Category extends AbsEntity {
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Category parentCategory;
 
-    @OneToMany(mappedBy = "parentCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Category> childs = new ArrayList<>();
+//    @OneToMany(mappedBy = "parentCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Category> childs = new ArrayList<>();
 }

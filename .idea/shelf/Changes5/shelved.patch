@@ -1,0 +1,17 @@
+Index: src/main/java/com/example/warehouseapp/service/AuthService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.warehouseapp.service;\r\n\r\nimport com.example.warehouseapp.entity.User;\r\nimport com.example.warehouseapp.repository.UserRepository;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.security.core.userdetails.UserDetails;\r\nimport org.springframework.security.core.userdetails.UserDetailsService;\r\nimport org.springframework.security.core.userdetails.UsernameNotFoundException;\r\nimport org.springframework.security.crypto.password.PasswordEncoder;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.Optional;\r\n\r\n@Service\r\npublic class AuthService implements UserDetailsService {\r\n\r\n    @Autowired\r\n    PasswordEncoder passwordEncoder;\r\n\r\n    @Autowired\r\n    UserRepository userRepository;\r\n\r\n    @Override\r\n    public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {\r\n        Optional<User> optionalUser = userRepository.findByPhoneNumber(phone);\r\n        return optionalUser.orElse(null);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/warehouseapp/service/AuthService.java b/src/main/java/com/example/warehouseapp/service/AuthService.java
+--- a/src/main/java/com/example/warehouseapp/service/AuthService.java	(revision b984a9299e7e9e466295de1f3fc67dbc68d12adf)
++++ b/src/main/java/com/example/warehouseapp/service/AuthService.java	(date 1636030440318)
+@@ -25,4 +25,4 @@
+         Optional<User> optionalUser = userRepository.findByPhoneNumber(phone);
+         return optionalUser.orElse(null);
+     }
+-}
++}
+\ No newline at end of file

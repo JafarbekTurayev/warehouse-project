@@ -1,0 +1,19 @@
+Index: src/main/java/com/example/warehouseapp/config/SecurityConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.warehouseapp.config;\r\n\r\nimport com.example.warehouseapp.security.JwtFilter;\r\nimport com.example.warehouseapp.service.AuthService;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.context.annotation.Bean;\r\nimport org.springframework.context.annotation.Configuration;\r\nimport org.springframework.security.authentication.AuthenticationManager;\r\nimport org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;\r\nimport org.springframework.security.config.annotation.web.builders.HttpSecurity;\r\nimport org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;\r\nimport org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;\r\nimport org.springframework.security.config.http.SessionCreationPolicy;\r\nimport org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;\r\nimport org.springframework.security.crypto.password.PasswordEncoder;\r\nimport org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;\r\n\r\nimport java.util.Properties;\r\n\r\n@Configuration\r\n@EnableWebSecurity\r\npublic class SecurityConfig extends WebSecurityConfigurerAdapter {\r\n\r\n    @Autowired\r\n    JwtFilter jwtFilter;\r\n\r\n    @Autowired\r\n    AuthService myAuthService;\r\n\r\n    @Override\r\n    protected void configure(AuthenticationManagerBuilder auth) throws Exception {\r\n        auth.userDetailsService(myAuthService);\r\n    }\r\n\r\n    @Override\r\n    protected void configure(HttpSecurity http) throws Exception {\r\n        http\r\n                .csrf().disable()\r\n                .authorizeRequests()\r\n                .antMatchers(\"/api/auth/login\").permitAll()\r\n                .anyRequest().authenticated();\r\n        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);\r\n        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);\r\n    }\r\n\r\n    @Bean\r\n    @Override\r\n    protected AuthenticationManager authenticationManager() throws Exception {\r\n        return super.authenticationManager();\r\n    }\r\n\r\n    @Bean\r\n    PasswordEncoder passwordEncoder() {\r\n        return new BCryptPasswordEncoder();\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/warehouseapp/config/SecurityConfig.java b/src/main/java/com/example/warehouseapp/config/SecurityConfig.java
+--- a/src/main/java/com/example/warehouseapp/config/SecurityConfig.java	(revision b984a9299e7e9e466295de1f3fc67dbc68d12adf)
++++ b/src/main/java/com/example/warehouseapp/config/SecurityConfig.java	(date 1636030440309)
+@@ -15,8 +15,6 @@
+ import org.springframework.security.crypto.password.PasswordEncoder;
+ import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+ 
+-import java.util.Properties;
+-
+ @Configuration
+ @EnableWebSecurity
+ public class SecurityConfig extends WebSecurityConfigurerAdapter {

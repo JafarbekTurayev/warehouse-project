@@ -1,0 +1,18 @@
+Index: src/main/java/com/example/warehouseapp/component/DataLoader.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.warehouseapp.component;\r\n\r\nimport com.example.warehouseapp.entity.enums.Permission;\r\nimport com.example.warehouseapp.entity.Role;\r\nimport com.example.warehouseapp.entity.User;\r\nimport com.example.warehouseapp.repository.RoleRepository;\r\nimport com.example.warehouseapp.repository.UserRepository;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.beans.factory.annotation.Value;\r\nimport org.springframework.boot.CommandLineRunner;\r\nimport org.springframework.security.crypto.password.PasswordEncoder;\r\nimport org.springframework.stereotype.Component;\r\n\r\nimport java.util.Arrays;\r\nimport java.util.HashSet;\r\nimport java.util.Set;\r\n\r\n@Component\r\npublic class DataLoader implements CommandLineRunner {\r\n    @Value(\"${spring.sql.init.mode}\")\r\n    private String initialMode;\r\n\r\n    @Autowired\r\n    PasswordEncoder passwordEncoder;\r\n    @Autowired\r\n    UserRepository userRepository;\r\n    @Autowired\r\n    RoleRepository roleRepository;\r\n\r\n    @Override\r\n    public void run(String... args) throws Exception {\r\n        if (initialMode.equals(\"always\")) {\r\n\r\n            Permission[] values = Permission.values();\r\n            Set<Permission> permissionSet = new HashSet<Permission>(Arrays.asList(values));\r\n\r\n            Role admin = roleRepository.save(new Role(1, \"ADMIN\", true, permissionSet));\r\n\r\n            userRepository.save(new User(\"Superadmin\",\r\n                    \"super\",\r\n                    \"912455897\",\r\n                    passwordEncoder.encode(\"123\"),\r\n                    admin,\r\n                    true));\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/warehouseapp/component/DataLoader.java b/src/main/java/com/example/warehouseapp/component/DataLoader.java
+--- a/src/main/java/com/example/warehouseapp/component/DataLoader.java	(revision b984a9299e7e9e466295de1f3fc67dbc68d12adf)
++++ b/src/main/java/com/example/warehouseapp/component/DataLoader.java	(date 1636030224759)
+@@ -15,6 +15,7 @@
+ import java.util.HashSet;
+ import java.util.Set;
+ 
++
+ @Component
+ public class DataLoader implements CommandLineRunner {
+     @Value("${spring.sql.init.mode}")

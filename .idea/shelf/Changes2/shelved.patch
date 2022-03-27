@@ -1,0 +1,16 @@
+Index: src/main/java/com/example/warehouseapp/entity/Currency.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.warehouseapp.entity;\r\n\r\nimport com.example.warehouseapp.entity.template.AbsEntity;\r\nimport lombok.Data;\r\nimport lombok.EqualsAndHashCode;\r\n\r\nimport javax.persistence.Entity;\r\n\r\n@EqualsAndHashCode(callSuper = true)\r\n@Data\r\n@Entity\r\npublic class Currency extends AbsEntity {\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/warehouseapp/entity/Currency.java b/src/main/java/com/example/warehouseapp/entity/Currency.java
+--- a/src/main/java/com/example/warehouseapp/entity/Currency.java	(revision b984a9299e7e9e466295de1f3fc67dbc68d12adf)
++++ b/src/main/java/com/example/warehouseapp/entity/Currency.java	(date 1636037073202)
+@@ -11,4 +11,5 @@
+ @Entity
+ public class Currency extends AbsEntity {
+ 
++
+ }

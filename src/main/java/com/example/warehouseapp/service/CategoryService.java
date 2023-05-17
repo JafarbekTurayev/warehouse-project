@@ -15,8 +15,11 @@ import java.util.Optional;
 @Service
 public class CategoryService {
 
-    @Autowired
-    CategoryRepository categoryRepository;
+    final CategoryRepository categoryRepository;
+
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
 
     public ApiResponse save(CategoryDTO categoryDTO) {
         boolean existsByName = categoryRepository.existsByName(categoryDTO.getName());

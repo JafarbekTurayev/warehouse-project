@@ -4,11 +4,85 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f4b5adb-9895-4012-83ae-19f797b2a317" name="Changes" comment="were house app" />
+    <list default="true" id="2f4b5adb-9895-4012-83ae-19f797b2a317" name="Changes" comment="measurementga preauthorize qo'shdim">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/da7ac422-9c5d-4c30-bed8-9d31707b9328.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/da7ac422-9c5d-4c30-bed8-9d31707b9328.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/da7ac422-9c5d-4c30-bed8-9d31707b9328/storage_v2/_src_/database/warehouse_app.pcqqtQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/da7ac422-9c5d-4c30-bed8-9d31707b9328/storage_v2/_src_/database/warehouse_app.pcqqtQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/da7ac422-9c5d-4c30-bed8-9d31707b9328/storage_v2/_src_/database/warehouse_app.pcqqtQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/da7ac422-9c5d-4c30-bed8-9d31707b9328/storage_v2/_src_/database/warehouse_app.pcqqtQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/da7ac422-9c5d-4c30-bed8-9d31707b9328/storage_v2/_src_/database/warehouse_app.pcqqtQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/da7ac422-9c5d-4c30-bed8-9d31707b9328/storage_v2/_src_/database/warehouse_app.pcqqtQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/warehouseapp/controller/MeasurementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/warehouseapp/controller/MeasurementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/warehouseapp/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/warehouseapp/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/warehouseapp/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/warehouseapp/entity/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/warehouseapp/entity/enums/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/warehouseapp/entity/enums/Permission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Test.http" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Test.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/WarehouseAppApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/WarehouseAppApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/component/DataLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/component/DataLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/config/KimYozganiniBilish.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/config/KimYozganiniBilish.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/config/KimYozganiniConfiglash.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/config/KimYozganiniConfiglash.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/controller/WarehouseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/controller/WarehouseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Category.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Currency.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Currency.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Input.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Input.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/InputProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/InputProduct.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Measurement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Measurement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Output.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Output.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/OutputProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/OutputProduct.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Supplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Supplier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Warehouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/Warehouse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/attachment/Attachment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/attachment/Attachment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/attachment/AttachmentContent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/attachment/AttachmentContent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/enums/Permission.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/enums/Permission.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/template/AbsEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/entity/template/AbsEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/payload/ApiResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/payload/ApiResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/payload/LoginDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/payload/LoginDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/AttachmentContentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/AttachmentContentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/AttachmentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/AttachmentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/CategoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/CategoryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/ClientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/ClientRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/CurrencyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/CurrencyRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/InputProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/InputProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/InputRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/InputRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/MeasurementRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/MeasurementRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/OutputProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/OutputProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/OutputRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/OutputRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/ProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/RoleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/RoleRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/SupplierRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/SupplierRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/WarehouseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/repository/WarehouseRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/security/JwtFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/security/JwtFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/security/JwtProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/security/JwtProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/service/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/service/WarehouseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/warehouseapp/service/WarehouseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/warehouseapp/WarehouseAppApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/warehouseapp/WarehouseAppApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/warehouse-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-app.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../warehouse-project\exportToHTML" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -26,6 +100,11 @@
         <option name="argument" value="--tags" />
         <option name="title" value="All" />
       </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -53,6 +132,9 @@
       </map>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="20MmXzetkWGlj0gd7pMoJ9eNNau" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -67,12 +149,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Amazon-Java-Backend-Project" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -94,7 +180,20 @@
       <command value="git add ." />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.WarehouseAppApplication">
+  <component name="RunManager" selected="Application.WarehouseAppApplication">
+    <configuration name="WarehouseAppApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.warehouseapp.WarehouseAppApplication" />
+      <module name="warehouse-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.warehouseapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/main/resources/Test.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -110,6 +209,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WarehouseAppApplication" />
         <item itemvalue="HTTP Request.Test#2" />
         <item itemvalue="HTTP Request.Test#1" />
       </list>
@@ -136,6 +236,18 @@
       <workItem from="1638623210756" duration="2912000" />
       <workItem from="1638885681665" duration="891000" />
       <workItem from="1648404190669" duration="1827000" />
+      <workItem from="1692819638017" duration="6291000" />
+      <workItem from="1692940994233" duration="716000" />
+      <workItem from="1692985331563" duration="598000" />
+      <workItem from="1694113334443" duration="214000" />
+      <workItem from="1694113584383" duration="918000" />
+      <workItem from="1694114656773" duration="1077000" />
+      <workItem from="1694193423405" duration="1193000" />
+      <workItem from="1694454915660" duration="1815000" />
+      <workItem from="1694539305671" duration="1815000" />
+      <workItem from="1694669639807" duration="789000" />
+      <workItem from="1695653042458" duration="685000" />
+      <workItem from="1695752112924" duration="1979000" />
     </task>
     <task id="LOCAL-00001" summary="were house app">
       <created>1648405894116</created>
@@ -160,10 +272,10 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="were house app" />
-    <option name="LAST_COMMIT_MESSAGE" value="were house app" />
+    <MESSAGE value="measurementga preauthorize qo'shdim" />
+    <option name="LAST_COMMIT_MESSAGE" value="measurementga preauthorize qo'shdim" />
   </component>
 </project>

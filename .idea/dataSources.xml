@@ -8,5 +8,14 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/warehouse_app</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="warehouse-app/Hibernate" uuid="a7bf8a41-0899-41b6-b2ab-16a18e1b72ec">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/warehouse_app</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

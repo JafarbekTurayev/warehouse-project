@@ -26,6 +26,12 @@ public enum     Permission {
     EDIT_CATEGORY,
     READ_CATEGORY,
 
+    //Measurement uchun
+    ADD_MEASUREMENT,
+    DELETE_MEASUREMENT,
+    EDIT_MEASUREMENT,
+    READ_MEASUREMENT
+
 
 
 }

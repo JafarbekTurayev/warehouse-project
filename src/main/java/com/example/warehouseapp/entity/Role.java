@@ -27,5 +27,6 @@ public class Role extends AbsEntity {
     public Role(Integer id, String name, boolean active, Set<Permission> permissions) {
         super(id, name, active);
         this.permissions = permissions;
+        
     }
 }

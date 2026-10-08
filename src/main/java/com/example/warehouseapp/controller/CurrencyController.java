@@ -49,6 +49,7 @@ public class CurrencyController {
         if (byIdAndActiveTrue.isPresent()) {
             Currency currency = byIdAndActiveTrue.get();
             currency.setActive(false);
+            currencyRepository.save(currency);
             return ResponseEntity.ok("Deleted");
         }
         return ResponseEntity.ok("Bunday Id mavjud emas" );

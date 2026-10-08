@@ -2,21 +2,21 @@ package com.example.warehouseapp.service;
 
 import com.example.warehouseapp.entity.*;
 import com.example.warehouseapp.entity.Currency;
+import com.example.warehouseapp.exception.ResourceNotFoundException;
 import com.example.warehouseapp.payload.ApiResponse;
 import com.example.warehouseapp.payload.ResInputDTO;
 import com.example.warehouseapp.payload.ResInputProductDTO;
 import com.example.warehouseapp.payload.responce.InputDTO;
 import com.example.warehouseapp.payload.responce.InputProductDTO;
 import com.example.warehouseapp.repository.*;
-import com.example.warehouseapp.utils.AppConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -37,17 +37,21 @@ public class InputService {
     @Autowired
     InputProductRepository inputProductRepository;
 
+    @Transactional(rollbackFor = ParseException.class)
     public ApiResponse add(InputDTO inputDTO) throws ParseException {
         Input input = new Input();
         input.setFactureNumber(inputDTO.getFactureName());
         input.setDate(new Date());
 
-        Optional<Currency> optionalCurrency = currencyRepository.findById(inputDTO.getCurrencyId());
-        input.setCurrency(optionalCurrency.get());
-        Optional<Supplier> optionalSupplier = supplierRepository.findById(inputDTO.getSupplierId());
-        input.setSupplier(optionalSupplier.get());
-        Optional<Warehouse> optionalWarehouse = warehouseRepository.findById(inputDTO.getWarehouseId());
-        input.setWarehouse(optionalWarehouse.get());
+        Currency currency = currencyRepository.findById(inputDTO.getCurrencyId())
+                .orElseThrow(() -> new ResourceNotFoundException("currency", "id", inputDTO.getCurrencyId()));
+        input.setCurrency(currency);
+        Supplier supplier = supplierRepository.findById(inputDTO.getSupplierId())
+                .orElseThrow(() -> new ResourceNotFoundException("supplier", "id", inputDTO.getSupplierId()));
+        input.setSupplier(supplier);
+        Warehouse warehouse = warehouseRepository.findById(inputDTO.getWarehouseId())
+                .orElseThrow(() -> new ResourceNotFoundException("warehouse", "id", inputDTO.getWarehouseId()));
+        input.setWarehouse(warehouse);
 
 
         //furadan tushirdik
@@ -59,8 +63,9 @@ public class InputService {
             InputProduct inputProduct = new InputProduct();
 
             //iphone
-            Optional<Product> optionalProduct = productRepository.findById(inputProductDTO.getProductId());
-            inputProduct.setProduct(optionalProduct.get());
+            Product product = productRepository.findById(inputProductDTO.getProductId())
+                    .orElseThrow(() -> new ResourceNotFoundException("product", "id", inputProductDTO.getProductId()));
+            inputProduct.setProduct(product);
 
             inputProduct.setAmount(inputProductDTO.getAmount());
             inputProduct.setPrice(inputProductDTO.getPrice());
@@ -137,9 +142,8 @@ public class InputService {
         c.setTime(fromDate);
         if (type.equals("daily")) {
             //kunlik
-//            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-//            Date fromDate = dateFormat.parse(date);
-//            Date toDate = dateFormat.parse(date);
+            c.add(Calendar.DATE, 1);
+            toDate = c.getTime();
             allByDate = inputRepository.findAllByDateBetween(fromDate, toDate);
         } else if (type.equals("weekly")) {
             c.add(Calendar.DATE, 7);
@@ -160,24 +164,20 @@ public class InputService {
     }
 
     public ApiResponse getById(Integer id) {
-        Optional<Input> input = inputRepository.findById(id);
-        return new ApiResponse("Id", true, input.get());
+        Input input = inputRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("input", "id", id));
+        return new ApiResponse("Id", true, input);
     }
 
     public ApiResponse getAllHistoryType(Integer supplierId, String from, String to) throws ParseException {
-//        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp());
-        Date fromDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(from);
-        Date toDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(to);
-        List<Input> all = new ArrayList<>();
-        if (supplierId == 0 && from.equals(AppConstants.BEGIN_DATE) && to.equals(AppConstants.END_DATE)) {
-            all = inputRepository.getAllHistory();
-        } else if (supplierId != 0 && from.equals(AppConstants.BEGIN_DATE) && to.equals(AppConstants.END_DATE)) {
-            all = inputRepository.findAllBySupplier_Id(supplierId);
-        } else if (supplierId == 0 && !from.equals(AppConstants.BEGIN_DATE) && !to.equals(AppConstants.END_DATE)) {
-            all = inputRepository.findAllByDateBetween(fromDate, toDate);
-        } else {
-            all = inputRepository.findAllBySupplier_IdAndDateBetween(supplierId, fromDate, toDate);
-        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setLenient(false);
+        Date fromDate = dateFormat.parse(from);
+        Date toDate = dateFormat.parse(to);
+        // supplierId = 0 -> barcha ta'minotchilar
+        List<Input> all = supplierId == 0
+                ? inputRepository.findAllByDateBetween(fromDate, toDate)
+                : inputRepository.findAllBySupplier_IdAndDateBetween(supplierId, fromDate, toDate);
         return new ApiResponse("Mana", true, all);
     }
 }

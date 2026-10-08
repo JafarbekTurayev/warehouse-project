@@ -1,10 +1,13 @@
 package com.example.warehouseapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Data
 @AllArgsConstructor
@@ -18,6 +21,9 @@ public class OutputProduct {
     private Product product;
     private Double amount;
     private Integer price;
+    @JsonIgnore
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne
     private  Output output;
 }

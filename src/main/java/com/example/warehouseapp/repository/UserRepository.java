@@ -14,9 +14,9 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     boolean existsByPhoneNumber(String phoneNumber);
 
-    boolean existsByCode(Integer code);
+    boolean existsByCode(String code);
 
-    @Query(value = "select * from users where users.id in(select users_id from users_ware_houses where ware_houses_id=:warehouseId)", nativeQuery = true)
+    @Query(value = "select * from users where users.id in(select users_id from users_warehouses where warehouses_id=:warehouseId)", nativeQuery = true)
     List<User> getAllByWarehouseId(Integer warehouseId);
 
 

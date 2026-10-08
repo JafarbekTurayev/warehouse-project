@@ -1,6 +1,6 @@
 package com.example.warehouseapp.payload;
 
-import com.sun.istack.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 
@@ -8,8 +8,8 @@ import lombok.Data;
 @Data
 public class LoginDTO {
 
-    @NotNull
+    @NotBlank
     private String userName;
-    @NotNull
+    @NotBlank
     private String password;
 }

@@ -6,7 +6,9 @@ import com.example.warehouseapp.payload.ApiResponse;
 import com.example.warehouseapp.payload.UserDto;
 import com.example.warehouseapp.repository.RoleRepository;
 import com.example.warehouseapp.repository.UserRepository;
+import com.example.warehouseapp.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,17 +21,21 @@ public class UserService {
     UserRepository userRepository;
     @Autowired
     RoleRepository roleRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
 
     public ApiResponse saveUser(UserDto userDto) {
         User user = new User();
         if (!userRepository.existsByPhoneNumber(userDto.getPhoneNumber())) {
 
-            Optional<Role> optionalRole = roleRepository.findById(userDto.getRoleId());
-            user.setRole(optionalRole.get());
+            Role role = roleRepository.findById(userDto.getRoleId())
+                    .orElseThrow(() -> new ResourceNotFoundException("role", "id", userDto.getRoleId()));
+            user.setRole(role);
 
             user.setPhoneNumber(userDto.getPhoneNumber());
-            user.setPassword(userDto.getPassword());
+            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+            user.setEnabled(true);
             user.setFirstName(userDto.getFirstName());
             user.setLastName(userDto.getLastName());
 
@@ -59,7 +65,9 @@ public class UserService {
             editUser.setLastName(user.getLastName());
             editUser.setPhoneNumber(user.getPhoneNumber());
             editUser.setCode(user.getCode());
-            editUser.setPassword(user.getPassword());
+            if (user.getPassword() != null && !user.getPassword().isBlank()) {
+                editUser.setPassword(passwordEncoder.encode(user.getPassword()));
+            }
             editUser.setActive(user.isActive());
             return userRepository.save(editUser);
 

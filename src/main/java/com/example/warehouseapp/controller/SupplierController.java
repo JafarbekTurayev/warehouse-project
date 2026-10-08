@@ -10,6 +10,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -22,7 +24,7 @@ public class SupplierController {
     SupplierServise supplierServise;
 
     @PostMapping
-    public HttpEntity<?> add(@RequestBody SupplierDTO supplier){
+    public HttpEntity<?> add(@Valid @RequestBody SupplierDTO supplier){
         ApiResponse apiResponse = supplierServise.add(supplier);
         return ResponseEntity.status(apiResponse.isSuccess() ? 201 : 409).body(apiResponse);
     }

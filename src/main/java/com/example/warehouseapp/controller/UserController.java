@@ -28,7 +28,7 @@ public class UserController {
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @PreAuthorize(value = "hasAuthority('READ_USER')")
+    @PreAuthorize(value = "hasAuthority('READ_USERS')")
     @GetMapping("/all")
     public HttpEntity<?> getAll(){
         List<User> all = userService.getALL();
@@ -48,7 +48,7 @@ public class UserController {
         return ResponseEntity.status(edited!=null? 201: 409).body(edited);
     }
 
-    @PreAuthorize(value = "hasAuthority(' DELETE_USER')")
+    @PreAuthorize(value = "hasAuthority('DELETE_USER')")
     @DeleteMapping("/{id}")
     public HttpEntity<?> deleteUser(@PathVariable UUID id){
     ApiResponse apiResponse = userService.delete(id);

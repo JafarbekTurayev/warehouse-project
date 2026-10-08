@@ -16,7 +16,7 @@ public class SupplierServise {
 
     public ApiResponse add(SupplierDTO supplierDTO) {
             Supplier supplier = new Supplier();
-        if (!supplierRepository.existsByPhoneNumber(supplierDTO.getName())) {
+        if (!supplierRepository.existsByPhoneNumber(supplierDTO.getPhoneNumber())) {
             supplier.setName(supplierDTO.getName());
             supplier.setPhoneNumber(supplierDTO.getPhoneNumber());
             supplierRepository.save(supplier);

@@ -13,7 +13,6 @@ List<Output> findAllByCurrency_Id(Integer currency_id);
 
 List<Output>findAllByDateBetween(Date from ,Date to);
 
-List<Output>findAllByDate(Date date);
 
 
 }

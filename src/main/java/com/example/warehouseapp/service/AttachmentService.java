@@ -5,6 +5,8 @@ import com.example.warehouseapp.entity.attachment.AttachmentContent;
 import com.example.warehouseapp.repository.AttachmentContentRepository;
 import com.example.warehouseapp.repository.AttachmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.example.warehouseapp.exception.ResourceNotFoundException;
+import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -18,7 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Service
-public class    AttachmentService {
+public class AttachmentService {
     @Autowired
     AttachmentRepository attachmentRepository;
 
@@ -60,11 +62,16 @@ public class    AttachmentService {
 
 
     public HttpEntity<?> download(Integer id) {
-        Attachment byId = attachmentRepository.getById(id);
-        AttachmentContent byAttachment = attachmentcontentReository.findByAttachment(byId);
+        Attachment byId = attachmentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("attachment", "id", id));
+        AttachmentContent byAttachment = attachmentcontentReository.findByAttachment_Id(id)
+                .orElseThrow(() -> new ResourceNotFoundException("attachmentContent", "attachmentId", id));
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(byId.getContentType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment:file=\""+ byId.getId() + "\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, ContentDisposition.attachment()
+                        .filename(byId.getOriginalName() != null ? byId.getOriginalName() : String.valueOf(byId.getId()))
+                        .build()
+                        .toString())
                 .body(byAttachment.getMainCode());
     }
 }

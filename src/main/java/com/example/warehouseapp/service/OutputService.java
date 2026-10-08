@@ -2,6 +2,7 @@ package com.example.warehouseapp.service;
 
 import com.example.warehouseapp.entity.*;
 import com.example.warehouseapp.entity.Currency;
+import com.example.warehouseapp.exception.ResourceNotFoundException;
 import com.example.warehouseapp.payload.ApiResponse;
 import com.example.warehouseapp.payload.ResOutputDto;
 import com.example.warehouseapp.payload.RestOutputProductDto;
@@ -13,10 +14,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Struct;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -36,17 +36,21 @@ public class OutputService {
     ProductRepository productRepository;
     @Autowired
     OutputProductRepository outputProductRepository;
+
+    @Transactional
     public ApiResponse addOutput(OutputDto outputDto) {
         Output output  = new Output();
         output.setDate(new Date());
-        Optional<Warehouse> optionalWarehouse = warehouseRepository.findById(outputDto.getWarehouseId());
-        output.setWarehouse(optionalWarehouse.get());
-        Optional<Currency> optionalCurrency = currencyRepository.findById(outputDto.getCurrencyId());
-        output.setCurrency(optionalCurrency.get());
-        Optional<Client> optionalClient = clientRepository.findById(outputDto.getClientId());
-        output.setClient(optionalClient.get());
+        Warehouse warehouse = warehouseRepository.findById(outputDto.getWarehouseId())
+                .orElseThrow(() -> new ResourceNotFoundException("warehouse", "id", outputDto.getWarehouseId()));
+        output.setWarehouse(warehouse);
+        Currency currency = currencyRepository.findById(outputDto.getCurrencyId())
+                .orElseThrow(() -> new ResourceNotFoundException("currency", "id", outputDto.getCurrencyId()));
+        output.setCurrency(currency);
+        Client client = clientRepository.findById(outputDto.getClientId())
+                .orElseThrow(() -> new ResourceNotFoundException("client", "id", outputDto.getClientId()));
+        output.setClient(client);
         output.setFactureNumber(outputDto.getFactureNumber());
-        outputRepository.save(output);
 
         List<OutputProductDto> outputProductDtoList = outputDto.getOutputProductDtoList();
         
@@ -54,26 +58,28 @@ public class OutputService {
 
         for (OutputProductDto outputProductDtofor : outputProductDtoList) {
             OutputProduct outputProduct = new OutputProduct();
-            Optional<Product> optionalProduct = productRepository.findById(outputProductDtofor.getProductId());
-            outputProduct.setProduct(optionalProduct.get());
+            Product product = productRepository.findById(outputProductDtofor.getProductId())
+                    .orElseThrow(() -> new ResourceNotFoundException("product", "id", outputProductDtofor.getProductId()));
+            outputProduct.setProduct(product);
             outputProduct.setPrice(outputProductDtofor.getPrice());
             outputProduct.setAmount(outputProductDtofor.getAmount());
             outputProduct.setOutput(output);
             outputProductList.add(outputProduct);
         }
         output.setOutputProductList(outputProductList);
-outputRepository.save(output);
-return  new ApiResponse("Saved",true,output);
+        outputRepository.save(output);
+        return new ApiResponse("Saved",true,output);
     }
 
     public ApiResponse getById(Integer id) {
-        Optional<Output> optionalOutputId = outputRepository.findById(id);
-        return  new ApiResponse("Id = ",true,optionalOutputId.get());
+        Output output = outputRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("output", "id", id));
+        return  new ApiResponse("Id = ",true,output);
     }
 
     public ApiResponse aditById(Integer id, OutputDto outputDto) {
         Optional<Output> optionalOutputId = outputRepository.findById(id);
-        if (optionalOutputId.isPresent()) {
+        if (optionalOutputId.isEmpty()) {
             return new ApiResponse("Not Found 404",false);
         }
         Output editIdOutput = optionalOutputId.get();
@@ -94,7 +100,7 @@ return  new ApiResponse("Saved",true,output);
 
         );
 
-        return new ApiResponse("Mana",true,outputs);
+        return new ApiResponse("Mana",true,resOutputDtoPage);
     }
     public ResOutputDto getResOutput(Output output){
 
@@ -137,9 +143,11 @@ return  new ApiResponse("Saved",true,output);
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.setTime(fromDate);
         if (type.equals("daily")){
-            allByDate = outputRepository.findAllByDate(fromDate);
+            calendar.add(Calendar.DATE, 1);
+            toDate = calendar.getTime();
+            allByDate = outputRepository.findAllByDateBetween(fromDate, toDate);
 
-        }else if (type.equals("wekly")){
+        }else if (type.equals("weekly")){
             calendar.add(Calendar.DATE, 7);
             toDate = calendar.getTime();
             allByDate = outputRepository.findAllByDateBetween(fromDate, toDate);

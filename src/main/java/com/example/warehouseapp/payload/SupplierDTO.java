@@ -1,8 +1,6 @@
 package com.example.warehouseapp.payload;
 
-import com.example.warehouseapp.entity.Supplier;
-import com.example.warehouseapp.service.SupplierServise;
-import com.sun.istack.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SupplierDTO {
-    @NotNull
+    @NotBlank
     private String name;
-    @NotNull
+    @NotBlank
     private String phoneNumber;
 
 

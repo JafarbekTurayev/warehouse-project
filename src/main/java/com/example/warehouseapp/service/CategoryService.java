@@ -33,9 +33,9 @@ public class CategoryService {
 
         if(categoryDTO.getParentCategoryId() != null){
             Optional<Category> optionalCategory = categoryRepository.findById(categoryDTO.getParentCategoryId());
-            if(!optionalCategory.isPresent())
+            if(optionalCategory.isEmpty())
                 return new ApiResponse("Parent Category Not Found!",false);
-            category.setParentCategory(categoryRepository.getById(categoryDTO.getParentCategoryId()));
+            category.setParentCategory(optionalCategory.get());
         }
 
         Category save = categoryRepository.save(category);
@@ -53,7 +53,7 @@ public class CategoryService {
     public ApiResponse edit(Integer id, CategoryDTO categoryDTO) {
         Optional<Category> optionalCategory = categoryRepository.findById(id);
 
-        if (!optionalCategory.isPresent())
+        if (optionalCategory.isEmpty())
             return new ApiResponse("Category Not Found", false);
 
         Category category = optionalCategory.get();
@@ -62,10 +62,10 @@ public class CategoryService {
 
         if(categoryDTO.getParentCategoryId() != null){
             Optional<Category> optional = categoryRepository.findById(categoryDTO.getParentCategoryId());
-            if(!optional.isPresent())
+            if(optional.isEmpty())
                 return new ApiResponse("Parent Category Not Found",false);
 
-            category.setParentCategory(categoryRepository.getById(categoryDTO.getParentCategoryId()));
+            category.setParentCategory(optional.get());
         }
 
         Category save = categoryRepository.save(category);
@@ -85,9 +85,8 @@ public class CategoryService {
     public ApiResponse getOneById(Integer id) {
         Optional<Category> byId = categoryRepository.findById(id);
         if (byId.isPresent()){
-            Category byId1 = categoryRepository.getById(id);
-            ResCategoryDTO resCategoryDTO = toResCat(byId1);
-            return new ApiResponse("Mana",true,byId1);
+            ResCategoryDTO resCategoryDTO = toResCat(byId.get());
+            return new ApiResponse("Mana",true,resCategoryDTO);
         }
         else {
             return new ApiResponse("Category Not Found!!!",false);
@@ -100,7 +99,6 @@ public class CategoryService {
     }
 
     public ApiResponse getChildCategories(Integer id) {
-        Optional<Category> byId = categoryRepository.findById(id);
         List<Category> childCategories = categoryRepository.findAllByParentCategoryId(id);
         List<ResCategoryDTO> resCategoryDTOList = toResCat(childCategories);
         return new ApiResponse("Mana",true,resCategoryDTOList);

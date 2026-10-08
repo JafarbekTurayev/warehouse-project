@@ -1,6 +1,7 @@
 package com.example.warehouseapp.service;
 
-import com.example.warehouseapp.entity.*;
+import com.example.warehouseapp.entity.Role;
+import com.example.warehouseapp.exception.ResourceNotFoundException;
 import com.example.warehouseapp.payload.ApiResponse;
 import com.example.warehouseapp.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,12 @@ public class RolesService {
     RoleRepository roleRepository;
 
     public ApiResponse add(Role role) throws ParseException {
-    Role newRole = new Role();
-    if (!roleRepository.existsByName(role.getName()))
-        newRole = roleRepository.save(
-                new Role(role.getId(), role.getName(), role.isActive(), role.getPermissions())
-        );
+        if (roleRepository.existsByName(role.getName()))
+            return new ApiResponse("This role already exists", false);
 
+        Role newRole = roleRepository.save(
+                new Role(null, role.getName(), role.isActive(), role.getPermissions())
+        );
         return new ApiResponse("Saved!", true, newRole);
     }
 
@@ -38,11 +39,7 @@ public class RolesService {
 
     public Role getOne(Integer id) {
         Optional<Role> optional = roleRepository.findById(id);
-        if (optional.isPresent()){
-            return optional.get();
-        }else {
-            throw new NullPointerException();
-        }
+        return optional.orElseThrow(() -> new ResourceNotFoundException("role", "id", id));
     }
 
     public ApiResponse edit(Integer id, Role dto) {

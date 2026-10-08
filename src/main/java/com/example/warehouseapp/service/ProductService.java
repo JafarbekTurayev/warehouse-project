@@ -6,6 +6,7 @@ import com.example.warehouseapp.entity.Product;
 import com.example.warehouseapp.exception.ResourceNotFoundException;
 import com.example.warehouseapp.payload.ApiResponse;
 import com.example.warehouseapp.payload.ProductDTO;
+import com.example.warehouseapp.payload.ResProductTop;
 import com.example.warehouseapp.repository.CategoryRepository;
 import com.example.warehouseapp.repository.MeasurementRepository;
 import com.example.warehouseapp.repository.ProductRepository;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -31,15 +33,13 @@ public class ProductService {
     public ApiResponse saveProduct(ProductDTO productDTO) {
         Product product = new Product();
         if (!productRepository.existsByName(productDTO.getName())) {
-            Optional<Measurement> optionalMeasurement = measurementRepository.findById(productDTO.getMeasureId());
-
-            Optional<Category> optionalCategory = categoryRepository.findById(productDTO.getCatId());
+            Measurement measurement = measurementRepository.findById(productDTO.getMeasureId())
+                    .orElseThrow(() -> new ResourceNotFoundException("measurement", "id", productDTO.getMeasureId()));
             Category category = categoryRepository.findById(productDTO.getCatId())
                     .orElseThrow(() -> new ResourceNotFoundException("category", "id", productDTO.getCatId()));
 
             product.setCategory(category);
-//            product.setCategory(optionalCategory.get());
-            product.setMeasurement(optionalMeasurement.get());
+            product.setMeasurement(measurement);
 
             product.setName(productDTO.getName());
 
@@ -65,7 +65,7 @@ public class ProductService {
 
     public Product editProduct(Integer id, ProductDTO productDTO) {
         Optional<Product> byId = productRepository.findById(id);
-        Optional<Measurement> optionalMeasurement = measurementRepository.findById(productDTO.getCatId());
+        Optional<Measurement> optionalMeasurement = measurementRepository.findById(productDTO.getMeasureId());
         Optional<Category> optionalCategory = categoryRepository.findById(productDTO.getCatId());
         if (byId.isPresent()) {
             Product editProduct = byId.get();
@@ -87,11 +87,12 @@ public class ProductService {
     }
 
     public ApiResponse top(String top) {
-//        if (top.equals("desc")) {
-            return new ApiResponse("Mana", true, productRepository.getTopInputProducts(top));
-//        } else {
-//            //umuman sotilmagan
-//            return new ApiResponse("Mana", true, productRepository.getLessInputProducts(String top));
-//        }
+        List<Object[]> rows = "asc".equalsIgnoreCase(top)
+                ? productRepository.getLessInputProducts()
+                : productRepository.getTopInputProducts();
+        List<ResProductTop> result = rows.stream()
+                .map(row -> new ResProductTop(((Number) row[0]).doubleValue(), (String) row[1]))
+                .collect(Collectors.toList());
+        return new ApiResponse("Mana", true, result);
     }
 }

@@ -4,7 +4,7 @@ import com.example.warehouseapp.entity.template.AbsEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Data
 @Entity

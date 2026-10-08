@@ -1,6 +1,7 @@
 package com.example.warehouseapp.entity;
 
 import com.example.warehouseapp.entity.enums.Permission;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.HashSet;
@@ -36,7 +37,8 @@ public class User implements UserDetails {
     @Column(nullable = false, unique = true)
     private String phoneNumber;
     private String code;
-    @Column(nullable = false, unique = true)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Column(nullable = false)
     private String password;
     private boolean active = true;
     @ManyToMany

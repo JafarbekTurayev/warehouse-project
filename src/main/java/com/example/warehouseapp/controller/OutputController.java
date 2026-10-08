@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/output")
@@ -40,7 +39,7 @@ public class OutputController {
         return ResponseEntity.ok(responseOne);
     }
 
-    @PutMapping("/edit")
+    @PutMapping("/edit/{id}")
     public HttpEntity<?> edit(@PathVariable Integer id, @RequestBody OutputDto outputDto) {
         ApiResponse responseEdit = outputService.aditById(id, outputDto);
         return ResponseEntity.ok(responseEdit);
@@ -51,7 +50,7 @@ public class OutputController {
         if (!outputRepository.existsById(id)) {
             return ResponseEntity.ok("Not Found");
         }
-        Optional<Output> optionalOutput = outputRepository.findById(id);
+        outputRepository.deleteById(id);
         return ResponseEntity.ok("Deleted");
     }
 
